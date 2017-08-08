@@ -1,0 +1,18 @@
+URxvt.transparent: true
+URxvt.shading: 15
+URxvt.scrollBar: false
+URxvt.background: black
+URxvt.foreground: white
+
+URxvt.font: xft:Iosevka Term :size=9
+URxvt.boldFont: xft:Iosevka Term :bold :size=9
+! URxvt.font: xft:Input Mono Condensed :size=9
+! URxvt.boldFont: xft:Input Mono Condensed :bold :size=9
+
+rofi.color-enabled: true
+! State:  bg fg bgalt hlbg hlfg
+rofi.font: Hermit 18
+rofi.color-window: #CC2F343F
+rofi.color-normal: #CC2F343F, #CCC1C1C1, #CC2F343F, #CC394249, #CCFFFFFF
+rofi.color-active: #CC2F343F, #CC80cbc4, #CC2F343F, #CC394249, #CC80cbc4
+rofi.color-urgent: #CC2F343F, #CCFF1844, #CC2F343F, #CC394249, #CCFF1844

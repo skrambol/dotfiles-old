@@ -1,0 +1,161 @@
+set $mod Mod4
+
+font pango:Zag Regular 8
+
+floating_modifier $mod
+
+bindsym $mod+Return exec urxvtc -e "tmux"
+
+bindsym $mod+Shift+q kill
+
+bindsym $mod+F2 exec "rofi -show run -width 30 -hide-scrollbar -lines 3"
+bindsym $mod+Tab exec "rofi -show"
+
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+bindsym $mod+n split h
+
+bindsym $mod+v split v
+
+bindsym $mod+f fullscreen toggle
+
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+
+bindsym $mod+Shift+space floating toggle
+
+bindsym $mod+space focus mode_toggle
+
+bindsym $mod+a focus parent
+
+set $WS1 "1 "
+set $WS2 "2 "
+set $WS3 "3 "
+set $WS4 "4 "
+set $WS5 "5 "
+set $WS6 "6 "
+set $WS7 "7 "
+set $WS8 "8 "
+set $WS9 "9 "
+set $WS10 "10 "
+
+bindsym $mod+1 workspace $WS1
+bindsym $mod+2 workspace $WS2
+bindsym $mod+3 workspace $WS3
+bindsym $mod+4 workspace $WS4
+bindsym $mod+5 workspace $WS5
+bindsym $mod+6 workspace $WS6
+bindsym $mod+7 workspace $WS7
+bindsym $mod+8 workspace $WS8
+bindsym $mod+9 workspace $WS9
+bindsym $mod+0 workspace $WS10
+
+bindsym $mod+Shift+1 move container to workspace $WS1
+bindsym $mod+Shift+2 move container to workspace $WS2
+bindsym $mod+Shift+3 move container to workspace $WS3
+bindsym $mod+Shift+4 move container to workspace $WS4
+bindsym $mod+Shift+5 move container to workspace $WS5
+bindsym $mod+Shift+6 move container to workspace $WS6
+bindsym $mod+Shift+7 move container to workspace $WS7
+bindsym $mod+Shift+8 move container to workspace $WS8
+bindsym $mod+Shift+9 move container to workspace $WS9
+bindsym $mod+Shift+0 move container to workspace $WS10
+
+assign [class="Firefox"] $WS1
+assign [class="Gimp"] $WS4
+assign [class="discord"] $WS9
+assign [title="Audacious"] $WS10
+# assign [title="cmus v2.7.1"] $WS10
+# assign [title="cava"] $WS10
+
+bindsym $mod+Shift+c reload
+bindsym $mod+Shift+r restart
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+
+mode "resize" {
+        bindsym h resize shrink width 10 px or 10 ppt
+        bindsym j resize grow height 10 px or 10 ppt
+        bindsym k resize shrink height 10 px or 10 ppt
+        bindsym l resize grow width 10 px or 10 ppt
+        bindsym Left resize shrink width 10 px or 10 ppt
+        bindsym Down resize grow height 10 px or 10 ppt
+        bindsym Up resize shrink height 10 px or 10 ppt
+        bindsym Right resize grow width 10 px or 10 ppt
+
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+
+bindsym $mod+r mode "resize"
+
+# keybindings
+bindsym Print exec scrot -e 'mv $f ~/Pictures/screencaps'
+bindsym $mod+Home exec lockity
+bindsym XF86AudioRaiseVolume exec "amixer -q sset Master 2%+ playback unmute"
+bindsym XF86AudioLowerVolume exec "amixer -q sset Master 2%- playback unmute"
+bindsym Mod1+XF86AudioLowerVolume exec "amixer -q sset Master 2%+ playback unmute"
+# bindsym XF86AudioMute exec "amixer -q sset Master, Speaker, Headphone toggle"
+bindsym XF86AudioPlay exec playerctl play-pause
+bindsym XF86AudioPause exec playerctl play-pause
+bindsym XF86AudioNext exec playerctl next
+bindsym XF86AudioPrev exec playerctl previous
+bindsym XF86AudioStop exec playerctl stop
+bindsym XF86MonBrightnessDown exec xbacklight -dec 10
+bindsym XF86MonBrightnessUp exec xbacklight -inc 10
+
+set $background_color #2F343F
+set $text_color       #f3f4f5
+set $inactive_background_color   #2F343F
+set $inactive_text_color #1F1F1F
+
+# border bg fg indicator
+client.focused $background_color $background_color $text_color $background_color
+client.unfocused $background_color $background_color $background_color $background_color
+client.focused_inactive $background_color $background_color $background_color $background_color
+
+for_window [class="URxvt"] border pixel 1
+for_window [class="discord"] floating enable border pixel 1
+for_window [class="Pcmanfm"] floating enable
+for_window [class="Feh"] floating enable
+for_window [class="Nitrogen"] floating enable
+# for_window [title="cmus v2.7.1"] move to workspace $WS10 floating enable move left 325px
+# for_window [title="cava"] move to workspace $WS10 floating enable move right 325px move down 10px
+
+hide_edge_borders both
+new_window pixel 1
+
+bar {
+  status_command ~/.config/i3/i3status_mod.sh
+  font pango:Hermit 8
+  position top
+  colors {
+    background $background_color
+    # border background text
+    focused_workspace $background_color $background_color $text_color
+    inactive_workspace $background_color $background_color $inactive_text_color
+  }
+}
+
+exec udiskie
+exec compton
+exec flux
+exec urxvtd -q -o -f
