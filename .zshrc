@@ -8,14 +8,16 @@ fpath=( "$HOME/.zfunctions" $fpath)
 # PROMPT=$'\n'"%B%F{81}%d%f"$'\n'">%b "
 VISUAL=vim
 EDITOR=vim
+
 HISTFILE="/home/foxtrot/.zhistory"
 SAVEHIST=2000
 HISTSIZE=100
 
-
 autoload -U promptinit; promptinit
 prompt pure
 PROMPT='%(?.%F{white}.%F{red})${PURE_PROMPT_SYMBOL:-❯}%f '
+
+autoload -Uz compinit; compinit
 
 # key bindings
 bindkey "${key[Home]}" beginning-of-line
