@@ -4,12 +4,18 @@
 source ~/.zkbd/screen-256color-:0
 
 dotfiles="$HOME/backupity/.dotfiles"
-PROMPT=$'\n'"%B%F{81}%d%f"$'\n'">%b "
+fpath=( "$HOME/.zfunctions" $fpath)
+# PROMPT=$'\n'"%B%F{81}%d%f"$'\n'">%b "
+VISUAL=vim
 EDITOR=vim
-#fpath=( "$HOME/.zfunctions" $fpath)
+HISTFILE="/home/foxtrot/.zhistory"
+SAVEHIST=2000
+HISTSIZE=100
 
-#autoload -U promptinit; promptinit
-#prompt pure
+
+autoload -U promptinit; promptinit
+prompt pure
+PROMPT='%(?.%F{white}.%F{red})${PURE_PROMPT_SYMBOL:-❯}%f '
 
 # key bindings
 bindkey "${key[Home]}" beginning-of-line
@@ -23,7 +29,7 @@ bindkey "^[^[[D" backward-word
 # bindkey "^H" backward-delete-word
 
 alias less='less -N'
-alias ls="ls --color"
+alias ls="ls --color --group-directories-first"
 alias grep="grep --color"
 alias ll="ls -lA"
 alias tmux="tmux -2"

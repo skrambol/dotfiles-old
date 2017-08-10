@@ -8,9 +8,6 @@ bindsym $mod+Return exec urxvtc -e "tmux"
 
 bindsym $mod+Shift+q kill
 
-bindsym $mod+F2 exec "rofi -show run -width 30 -hide-scrollbar -lines 3"
-bindsym $mod+Tab exec "rofi -show"
-
 bindsym $mod+h focus left
 bindsym $mod+j focus down
 bindsym $mod+k focus up
@@ -82,6 +79,7 @@ bindsym $mod+Shift+0 move container to workspace $WS10
 
 assign [class="Firefox"] $WS1
 assign [class="Gimp"] $WS4
+assign [class="Steam"] $WS8
 assign [class="discord"] $WS9
 assign [title="Audacious"] $WS10
 # assign [title="cmus v2.7.1"] $WS10
@@ -108,12 +106,16 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 # keybindings
+bindsym $mod+d exec pcmanfm
+bindsym $mod+F2 exec "rofi -show run -width 30 -hide-scrollbar -lines 3"
+bindsym $mod+Tab exec "rofi -show"
 bindsym Print exec scrot -e 'mv $f ~/Pictures/screencaps'
+bindsym Shift+Print exec scrot -s -e 'mv $f ~/Pictures/screencaps'
 bindsym $mod+Home exec lockity
 bindsym XF86AudioRaiseVolume exec "amixer -q sset Master 2%+ playback unmute"
 bindsym XF86AudioLowerVolume exec "amixer -q sset Master 2%- playback unmute"
 bindsym Mod1+XF86AudioLowerVolume exec "amixer -q sset Master 2%+ playback unmute"
-# bindsym XF86AudioMute exec "amixer -q sset Master, Speaker, Headphone toggle"
+bindsym XF86AudioMute exec toggle_mute
 bindsym XF86AudioPlay exec playerctl play-pause
 bindsym XF86AudioPause exec playerctl play-pause
 bindsym XF86AudioNext exec playerctl next
@@ -135,8 +137,9 @@ client.focused_inactive $background_color $background_color $background_color $b
 for_window [class="URxvt"] border pixel 1
 for_window [class="discord"] floating enable border pixel 1
 for_window [class="Pcmanfm"] floating enable
-for_window [class="Feh"] floating enable
+for_window [class="feh"] floating enable
 for_window [class="Nitrogen"] floating enable
+for_window [class="Steam"] floating enable
 # for_window [title="cmus v2.7.1"] move to workspace $WS10 floating enable move left 325px
 # for_window [title="cava"] move to workspace $WS10 floating enable move right 325px move down 10px
 
@@ -157,5 +160,7 @@ bar {
 
 exec udiskie
 exec compton
-exec flux
+exec xinput --set-prop "SynPS/2 Synaptics TouchPad" "libinput Natural Scrolling Enabled" 1
+exec xinput --set-prop "SynPS/2 Synaptics TouchPad" "libinput Tapping Enabled" 1
+exec xflux -l 12.8797 -g 121.7740
 exec urxvtd -q -o -f
