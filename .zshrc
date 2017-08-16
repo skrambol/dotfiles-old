@@ -1,6 +1,15 @@
 [[ -z $DISPLAY && $XDG_VTNR -eq 1 ]] && exec startx
 
-[[ -f ~/.zkbd/screen-256color-:0 ]] && source ~/.zkbd/screen-256color-:0
+# VARIABLES
+dotfiles="$HOME/backupity/.dotfiles"
+fpath=( "$dotfiles/.zfunctions" $fpath)
+VISUAL=vim
+EDITOR=vim
+HISTFILE="/home/foxtrot/.zhistory"
+SAVEHIST=2000
+HISTSIZE=1000
+
+[[ -f $dotfiles/.zkbd ]] && source $dotfiles/.zkbd
 [[ -f ~/.sh_aliases ]] && source ~/.sh_aliases
 
 # PROMPT
@@ -11,15 +20,6 @@ PROMPT='%(?.%F{white}.%F{red})${PURE_PROMPT_SYMBOL:-❯}%f '
 
 # OPTIONS
 setopt histignorealldups sharehistory
-
-# VARIABLES
-dotfiles="$HOME/backupity/.dotfiles"
-fpath=( "$HOME/.zfunctions" $fpath)
-VISUAL=vim
-EDITOR=vim
-HISTFILE="/home/foxtrot/.zhistory"
-SAVEHIST=2000
-HISTSIZE=100
 
 # modules
 autoload -Uz compinit; compinit

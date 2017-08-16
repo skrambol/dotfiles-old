@@ -1,5 +1,7 @@
-#!/bin/bash
-lock_icon="$HOME/Pictures/lock_icon.png"
+#!/bin/sh
+icon_count=$( ls $HOME/Pictures/ | grep -c "lock_icon" )
+num=$(( $RANDOM % $icon_count ))
+lock_icon="$HOME/Pictures/lock_icon$num.png"
 tmp_screen="/tmp/screen.png"
 
 scrot $tmp_screen
