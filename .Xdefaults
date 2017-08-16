@@ -4,10 +4,10 @@ URxvt.scrollBar: false
 URxvt.background: black
 URxvt.foreground: white
 
-URxvt.font: xft:Iosevka Term Light :size=9
-URxvt.boldFont: xft:Iosevka Term Light :bold :size=9
-! URxvt.font: xft:Input Mono :size=9
-! URxvt.boldFont: xft:Input Mono :bold :size=9
+! URxvt.font: xft:Iosevka Term Light :size=9
+! URxvt.boldFont: xft:Iosevka Term Light :bold :size=9
+URxvt.font: xft:Input Mono: size=9
+URxvt.boldFont: xft:Input Mono: bold :size=9
 
 rofi.color-enabled: true
 ! State:  bg fg bgalt hlbg hlfg
