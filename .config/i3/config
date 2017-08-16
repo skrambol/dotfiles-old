@@ -107,8 +107,9 @@ bindsym $mod+r mode "resize"
 
 # keybindings
 bindsym $mod+d exec pcmanfm
+bindsym $mod+Shift+f exec "firefox -P Clandestine"
 bindsym $mod+F2 exec "rofi -show run -width 30 -hide-scrollbar -lines 3"
-bindsym $mod+Tab exec "rofi -show"
+bindsym $mod+Tab exec "rofi -show window -width 30 -hide-scrollbar -lines 3"
 bindsym Print exec scrot -e 'mv $f ~/Pictures/screencaps'
 bindsym Shift+Print exec scrot -s -e 'mv $f ~/Pictures/screencaps'
 bindsym $mod+Home exec lockity
@@ -158,6 +159,7 @@ bar {
   }
 }
 
+exec nitrogen --restore
 exec udiskie
 exec compton
 exec xinput --set-prop "SynPS/2 Synaptics TouchPad" "libinput Natural Scrolling Enabled" 1
