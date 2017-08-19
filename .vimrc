@@ -5,13 +5,14 @@ if !exists("g:syntax_on")
     syntax enable
 endif
 
+colorscheme crayon
 colorscheme chroma
 hi Normal guibg=NONE ctermbg=NONE
 
 hi Special ctermbg=none
 hi NonText ctermbg=none
 
-set relativenumber nu cursorline cc=120
+set relativenumber nu cursorline
 set ts=2 sw=2 expandtab autoindent smartindent
 set foldmethod=syntax nofoldenable
 set autoread

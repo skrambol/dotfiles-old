@@ -10,12 +10,12 @@ SAVEHIST=2000
 HISTSIZE=1000
 
 [[ -f $dotfiles/.zkbd ]] && source $dotfiles/.zkbd
-[[ -f ~/.sh_aliases ]] && source ~/.sh_aliases
+[[ -f ~/.aliases.sh ]] && source ~/.aliases.sh
 
 # PROMPT
 autoload -U promptinit; promptinit
 prompt pure
-PROMPT='%(?.%F{white}.%F{red})${PURE_PROMPT_SYMBOL:-$}%f '
+PROMPT='%(?.%F{white}.%F{red})${PURE_PROMPT_SYMBOL:-→}%f '
 # PROMPT=$'\n'"%B%F{81}%d%f"$'\n'">%b "
 
 # OPTIONS

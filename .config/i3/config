@@ -5,6 +5,7 @@ font pango:Zag Regular 8
 floating_modifier $mod
 
 bindsym $mod+Return exec urxvtc -e "tmux"
+bindsym $mod+Shift+Return exec urxvtc -name "urxvt_mini"
 
 bindsym $mod+Shift+q kill
 
@@ -78,12 +79,12 @@ bindsym $mod+Shift+9 move container to workspace $WS9
 bindsym $mod+Shift+0 move container to workspace $WS10
 
 assign [class="Firefox"] $WS1
+assign [title="^urxvt$"] $WS2
 assign [class="Gimp"] $WS4
 assign [class="Steam"] $WS8
 assign [class="discord"] $WS9
+assign [class="Spotify"] $WS10
 assign [title="Audacious"] $WS10
-# assign [title="cmus v2.7.1"] $WS10
-# assign [title="cava"] $WS10
 
 bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
@@ -108,7 +109,7 @@ bindsym $mod+r mode "resize"
 # keybindings
 bindsym $mod+d exec pcmanfm
 bindsym $mod+Shift+f exec "firefox -P Clandestine"
-bindsym $mod+F2 exec "rofi -show run -width 30 -hide-scrollbar -lines 3"
+bindsym $mod+F2 exec "rofi -show run -width 30 -hide-scrollbar -lines 3 -font 'Hermit 18'"
 bindsym $mod+Tab exec "rofi -show window -width 30 -hide-scrollbar -lines 3"
 bindsym Print exec scrot -e 'mv $f ~/Pictures/screencaps'
 bindsym Shift+Print exec scrot -s -e 'mv $f ~/Pictures/screencaps'
@@ -135,6 +136,7 @@ client.focused $background_color $background_color $text_color $background_color
 client.unfocused $background_color $background_color $background_color $background_color
 client.focused_inactive $background_color $background_color $background_color $background_color
 
+for_window [title="urxvt_mini"] floating enable
 for_window [class="URxvt"] border pixel 1
 for_window [class="discord"] floating enable border pixel 1
 for_window [class="Pcmanfm"] floating enable
