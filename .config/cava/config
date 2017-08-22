@@ -5,7 +5,7 @@
 
 # Smoothing mode. Can be 'normal', 'scientific' or 'waves'.
 ; mode = normal
- 
+
 # Accepts only non-negative values.
 ; framerate = 60
 
@@ -20,9 +20,9 @@
 
 # The number of bars (0-200). 0 sets it to auto (fill up console).
 # Bars' width and space between bars in number of characters.
-; bars = 0
-; bar_width = 2
-; bar_spacing = 1
+bars = 199
+bar_width = 1
+bar_spacing = 1
 
 
 # Lower and higher cutoff frequencies for lowest and highest bars
@@ -44,7 +44,7 @@
 #
 # For pulseaudio 'source' will be the source. Default: 'auto', which uses the monitor source of the default sink
 # (all pulseaudio sinks(outputs) have 'monitor' sources(inputs) associated with them).
-# 
+#
 # For alsa 'source' will be the capture device.
 # For fifo 'source' will be the path to fifo-file.
 ; method = pulse
@@ -60,7 +60,7 @@
 
 [output]
 
-# Ouput method. Can be 'ncurses', 'noncurses' or 'raw'. 
+# Ouput method. Can be 'ncurses', 'noncurses' or 'raw'.
 # 'noncurses' is for systems that does not suport ncurses.
 # 'raw' is a 16 bit data stream of the bar heights that can be used to send to other applications.
 # 'raw' defaults to 200 bars, which can be adjusted in the 'bars' option above.
@@ -95,7 +95,7 @@
 # Colors can be one of seven predefined: black, blue, cyan, green, magenta, red, white, yellow.
 # Or defined by hex code '#xxxxxx' (hex code must be within '').
 ; background = black
-foreground = '#f4a442'
+foreground = '#51758A'
 
 
 [smoothing]

@@ -48,10 +48,10 @@ bindsym $mod+a focus parent
 set $WS1 "1 "
 set $WS2 "2 "
 set $WS3 "3 "
-set $WS4 "4 "
-set $WS5 "5 "
-set $WS6 "6 "
-set $WS7 "7 "
+set $WS4 "4 "
+set $WS5 "5 "
+set $WS6 "6 "
+set $WS7 "7 "
 set $WS8 "8 "
 set $WS9 "9 "
 set $WS10 "10 "
@@ -79,12 +79,14 @@ bindsym $mod+Shift+9 move container to workspace $WS9
 bindsym $mod+Shift+0 move container to workspace $WS10
 
 assign [class="Firefox"] $WS1
-assign [title="^urxvt$"] $WS2
+assign [instance="^urxvt$"] $WS2
 assign [class="Gimp"] $WS4
 assign [class="Steam"] $WS8
 assign [class="discord"] $WS9
-assign [class="Spotify"] $WS10
+assign [title="spotify"] $WS10
 assign [title="Audacious"] $WS10
+assign [title="cmus"] $WS10
+assign [title="cava"] $WS10
 
 bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
@@ -107,10 +109,10 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 # keybindings
-bindsym $mod+d exec pcmanfm
+bindsym $mod+d exec urxvtc -name "urxvt_mini" -e ranger
 bindsym $mod+Shift+f exec "firefox -P Clandestine"
 bindsym $mod+F2 exec "rofi -show run -width 30 -hide-scrollbar -lines 3 -font 'Hermit 18'"
-bindsym $mod+Tab exec "rofi -show window -width 30 -hide-scrollbar -lines 3"
+bindsym $mod+Tab exec "rofi -show window -width 30 -hide-scrollbar -lines 3 -font 'Hermit 18'"
 bindsym Print exec scrot -e 'mv $f ~/Pictures/screencaps'
 bindsym Shift+Print exec scrot -s -e 'mv $f ~/Pictures/screencaps'
 bindsym $mod+Home exec lockity
@@ -118,11 +120,11 @@ bindsym XF86AudioRaiseVolume exec "amixer -q sset Master 2%+ playback unmute"
 bindsym XF86AudioLowerVolume exec "amixer -q sset Master 2%- playback unmute"
 bindsym Mod1+XF86AudioLowerVolume exec "amixer -q sset Master 2%+ playback unmute"
 bindsym XF86AudioMute exec toggle_mute
-bindsym XF86AudioPlay exec playerctl play-pause
-bindsym XF86AudioPause exec playerctl play-pause
-bindsym XF86AudioNext exec playerctl next
-bindsym XF86AudioPrev exec playerctl previous
-bindsym XF86AudioStop exec playerctl stop
+bindsym XF86AudioPlay exec playerctl play-pause || cmus-remote -u
+bindsym XF86AudioPause exec playerctl play-pause || cmus-remote -u
+bindsym XF86AudioNext exec playerctl next || cmus-remote -n
+bindsym XF86AudioPrev exec playerctl previous || cmus-remote -p
+bindsym XF86AudioStop exec playerctl stop || cmus-remote -s
 bindsym XF86MonBrightnessDown exec xbacklight -dec 10
 bindsym XF86MonBrightnessUp exec xbacklight -inc 10
 
@@ -136,15 +138,16 @@ client.focused $background_color $background_color $text_color $background_color
 client.unfocused $background_color $background_color $background_color $background_color
 client.focused_inactive $background_color $background_color $background_color $background_color
 
-for_window [title="urxvt_mini"] floating enable
+for_window [instance="urxvt_mini"] floating enable
+for_window [title="ranger"] floating enable
 for_window [class="URxvt"] border pixel 1
 for_window [class="discord"] floating enable border pixel 1
 for_window [class="Pcmanfm"] floating enable
 for_window [class="feh"] floating enable
 for_window [class="Nitrogen"] floating enable
 for_window [class="Steam"] floating enable
-# for_window [title="cmus v2.7.1"] move to workspace $WS10 floating enable move left 325px
-# for_window [title="cava"] move to workspace $WS10 floating enable move right 325px move down 10px
+for_window [title="cmus"] move left 325px
+for_window [title="cava"] move right 325px move up 10px
 
 hide_edge_borders both
 new_window pixel 1
@@ -161,10 +164,11 @@ bar {
   }
 }
 
-exec nitrogen --restore
+# exec nitrogen --restore
 exec udiskie
 exec compton
 exec xinput --set-prop "SynPS/2 Synaptics TouchPad" "libinput Natural Scrolling Enabled" 1
 exec xinput --set-prop "SynPS/2 Synaptics TouchPad" "libinput Tapping Enabled" 1
 exec xflux -l 12.8797 -g 121.7740
 exec urxvtd -q -o -f
+exec wal -Rq -a "85"
