@@ -1,3 +1,6 @@
+.zfunctions/*
+!.zfunctions/*.zsh
+
 .config/cmus/*.pl
 **/*history
 
