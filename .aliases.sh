@@ -7,7 +7,7 @@ alias flux="xflux -l 12.8797 -g 121.7740"
 alias mv="mv --backup=numbered"
 alias cp="cp --backup=numbered"
 
-alias @play_cmus="urxvtc -name 'urxvt_mini' -e cmus" # && urxvtc -name 'urxvt_mini' -e cava &"
+alias @play_cmus="urxvtc -name 'urxvt_mini' -e cmus && urxvtc -name 'urxvt_mini' -e cava &"
 alias @javac='find ../src -name "*.java" > java.txt | javac -Xdiags:verbose -Xlint:deprecation -Xlint:unchecked -d . @java.txt'
 alias @simplehttpserver='python3 -m http.server'
 alias @pdfusion='gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dPDFSETTINGS=/default -dNOPAUSE -dQUIET -dBATCH -dDetectDuplicateImages -dCompressFonts=true -r150 -sOutputFile=output.pdf *.pdf; notify-send "@pdfusion finished!"'
@@ -26,4 +26,8 @@ function @mv {
   fi
 
   return $STATUS
+}
+
+function @aur-snapshot {
+  wget https://aur.archlinux.org/cgit/aur.git/snapshot/$1.tar.gz
 }

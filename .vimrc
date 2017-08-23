@@ -18,6 +18,9 @@ hi NonText ctermbg=none
 hi LineNr ctermbg=none
 hi CursorLineNr ctermbg=none
 hi SignColumn ctermbg=none
+hi TabLine ctermbg=none ctermfg=235
+hi TabLineFill ctermbg=none
+hi TabLineSel ctermbg=none cterm=none
 
 set relativenumber nu cursorline
 set ts=2 sw=2 expandtab autoindent smartindent

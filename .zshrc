@@ -1,8 +1,8 @@
 [[ -z $DISPLAY && $XDG_VTNR -eq 1 ]] && exec startx
 
 # VARIABLES
-dotfiles="$HOME/backupity/.dotfiles"
-fpath=( "$dotfiles/.zfunctions" $fpath)
+export dotfiles="$HOME/backupity/.dotfiles"
+export fpath=( "$dotfiles/.zfunctions" $fpath)
 VISUAL=vim
 EDITOR=vim
 HISTFILE="/home/foxtrot/.zhistory"

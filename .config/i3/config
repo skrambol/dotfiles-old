@@ -45,16 +45,16 @@ bindsym $mod+space focus mode_toggle
 
 bindsym $mod+a focus parent
 
-set $WS1 "1 "
-set $WS2 "2 "
-set $WS3 "3 "
-set $WS4 "4 "
-set $WS5 "5 "
-set $WS6 "6 "
-set $WS7 "7 "
-set $WS8 "8 "
-set $WS9 "9 "
-set $WS10 "10 "
+set $WS1 "1:"
+set $WS2 "2:"
+set $WS3 "3:"
+set $WS4 "4:"
+set $WS5 "5:"
+set $WS6 "6:"
+set $WS7 "7:"
+set $WS8 "8:"
+set $WS9 "9:"
+set $WS10 "10:"
 
 bindsym $mod+1 workspace $WS1
 bindsym $mod+2 workspace $WS2
@@ -146,29 +146,30 @@ for_window [class="Pcmanfm"] floating enable
 for_window [class="feh"] floating enable
 for_window [class="Nitrogen"] floating enable
 for_window [class="Steam"] floating enable
-for_window [title="cmus"] move left 325px
-for_window [title="cava"] move right 325px move up 10px
+for_window [title="cmus"] move right 325px
+for_window [title="cava"] move left 325px move up 10px
 
 hide_edge_borders both
 new_window pixel 1
 
-bar {
-  status_command ~/.config/i3/i3status_mod.sh
-  font pango:Hermit 8
-  position top
-  colors {
-    background $background_color
-    # border background text
-    focused_workspace $background_color $background_color $text_color
-    inactive_workspace $background_color $background_color $inactive_text_color
-  }
-}
+# bar {
+#   status_command ~/.config/i3/i3status_mod.sh
+#   font pango:Hermit 8
+#   position top
+#   colors {
+#     background $background_color
+#     # border background text
+#     focused_workspace $background_color $background_color $text_color
+#     inactive_workspace $background_color $background_color $inactive_text_color
+#   }
+# }
 
-# exec nitrogen --restore
+exec nitrogen --restore
 exec udiskie
 exec compton
 exec xinput --set-prop "SynPS/2 Synaptics TouchPad" "libinput Natural Scrolling Enabled" 1
 exec xinput --set-prop "SynPS/2 Synaptics TouchPad" "libinput Tapping Enabled" 1
 exec xflux -l 12.8797 -g 121.7740
 exec urxvtd -q -o -f
-exec wal -Rq -a "85"
+exec wal -Rqn -a "85"
+exec ./$dotfiles/shell_scripts/polybar_start.sh
