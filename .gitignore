@@ -1,7 +1,12 @@
 .zfunctions/*
 !.zfunctions/*.zsh
 
+.vim/bundle
+.vim/autoload
+.vim/.netrwhist
+
 .config/cmus/*.pl
+
 **/*history
 
 .fonts/

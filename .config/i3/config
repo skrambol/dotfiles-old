@@ -172,4 +172,4 @@ exec xinput --set-prop "SynPS/2 Synaptics TouchPad" "libinput Tapping Enabled" 1
 exec xflux -l 12.8797 -g 121.7740
 exec urxvtd -q -o -f
 exec wal -Rqn -a "85"
-exec ./$dotfiles/shell_scripts/polybar_start.sh
+exec sh -c $dotfiles/shell_scripts/polybar_start.sh

@@ -9,17 +9,16 @@ let g:airline_powerline_fonts=1
 let g:airline_section_z="%4l : %3v"
 let g:gitgutter_override_sign_column_highlight = 0
 
-colorscheme crayon
-colorscheme chroma
+colorscheme delek
 hi Normal guibg=NONE ctermbg=NONE
 
 hi Special ctermbg=none
 hi NonText ctermbg=none
-hi LineNr ctermbg=none
+hi LineNr ctermbg=none ctermfg=white
 hi CursorLineNr ctermbg=none
 hi SignColumn ctermbg=none
-hi TabLine ctermbg=none ctermfg=235
-hi TabLineFill ctermbg=none
+hi TabLine ctermbg=none ctermfg=235 cterm=none
+hi TabLineFill ctermbg=none cterm=none ctermfg=none
 hi TabLineSel ctermbg=none cterm=none
 
 set relativenumber nu cursorline
