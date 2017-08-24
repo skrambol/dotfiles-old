@@ -4,9 +4,6 @@ font pango:Zag Regular 8
 
 floating_modifier $mod
 
-bindsym $mod+Return exec urxvtc -e "tmux"
-bindsym $mod+Shift+Return exec urxvtc -name "urxvt_mini"
-
 bindsym $mod+Shift+q kill
 
 bindsym $mod+h focus left
@@ -78,16 +75,6 @@ bindsym $mod+Shift+8 move container to workspace $WS8
 bindsym $mod+Shift+9 move container to workspace $WS9
 bindsym $mod+Shift+0 move container to workspace $WS10
 
-assign [class="Firefox"] $WS1
-assign [instance="^urxvt$"] $WS2
-assign [class="Gimp"] $WS4
-assign [class="Steam"] $WS8
-assign [class="discord"] $WS9
-assign [title="spotify"] $WS10
-assign [title="Audacious"] $WS10
-assign [title="cmus"] $WS10
-assign [title="cava"] $WS10
-
 bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
@@ -108,26 +95,7 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-# keybindings
-bindsym $mod+d exec urxvtc -name "urxvt_mini" -e ranger
-bindsym $mod+Shift+f exec "firefox -P Clandestine"
-bindsym $mod+F2 exec "rofi -show run -width 30 -hide-scrollbar -lines 3 -font 'Hermit 18'"
-bindsym $mod+Tab exec "rofi -show window -width 30 -hide-scrollbar -lines 3 -font 'Hermit 18'"
-bindsym Print exec scrot -e 'mv $f ~/Pictures/screencaps'
-bindsym Shift+Print exec scrot -s -e 'mv $f ~/Pictures/screencaps'
-bindsym $mod+Home exec lockity
-bindsym XF86AudioRaiseVolume exec "amixer -q sset Master 2%+ playback unmute"
-bindsym XF86AudioLowerVolume exec "amixer -q sset Master 2%- playback unmute"
-bindsym Mod1+XF86AudioLowerVolume exec "amixer -q sset Master 2%+ playback unmute"
-bindsym XF86AudioMute exec toggle_mute
-bindsym XF86AudioPlay exec playerctl play-pause || cmus-remote -u
-bindsym XF86AudioPause exec playerctl play-pause || cmus-remote -u
-bindsym XF86AudioNext exec playerctl next || cmus-remote -n
-bindsym XF86AudioPrev exec playerctl previous || cmus-remote -p
-bindsym XF86AudioStop exec playerctl stop || cmus-remote -s
-bindsym XF86MonBrightnessDown exec xbacklight -dec 10
-bindsym XF86MonBrightnessUp exec xbacklight -inc 10
-
+# colors [for i3status]
 set $background_color #2F343F
 set $text_color       #f3f4f5
 set $inactive_background_color   #2F343F
@@ -137,6 +105,40 @@ set $inactive_text_color #1F1F1F
 client.focused $background_color $background_color $text_color $background_color
 client.unfocused $background_color $background_color $background_color $background_color
 client.focused_inactive $background_color $background_color $background_color $background_color
+
+# keybindings
+bindsym $mod+Return exec urxvtc -e "tmux"
+bindsym $mod+Shift+Return exec urxvtc -name "urxvt_mini"
+bindsym $mod+d exec urxvtc -name "urxvt_mini" -e ranger
+bindsym $mod+Shift+f exec "firefox -P Clandestine"
+bindsym $mod+F2 exec "rofi -show run -width 30 -hide-scrollbar -lines 3 -font 'Hermit 18'"
+bindsym $mod+Tab exec "rofi -show window -width 30 -hide-scrollbar -lines 3 -font 'Hermit 18'"
+bindsym Print exec scrot -e 'mv $f ~/Pictures/screencaps'
+bindsym Shift+Print exec scrot -s -e 'mv $f ~/Pictures/screencaps'
+bindsym $mod+Home exec ~/backupity/.dotfiles/shell_scripts/lock.sh
+bindsym XF86AudioRaiseVolume exec "amixer -q sset Master 2%+ playback unmute"
+bindsym XF86AudioLowerVolume exec "amixer -q sset Master 2%- playback unmute"
+bindsym Mod1+XF86AudioLowerVolume exec "amixer -q sset Master 2%+ playback unmute"
+bindsym XF86AudioMute exec ~/backupity/.dotfiles/shell_scripts/toggle_mute.zsh
+bindsym XF86AudioPlay exec playerctl play-pause || cmus-remote -u
+bindsym XF86AudioPause exec playerctl play-pause || cmus-remote -u
+bindsym XF86AudioNext exec playerctl next || cmus-remote -n
+bindsym XF86AudioPrev exec playerctl previous || cmus-remote -p
+bindsym XF86AudioStop exec playerctl stop || cmus-remote -s
+bindsym XF86MonBrightnessDown exec xbacklight -dec 10
+bindsym XF86MonBrightnessUp exec xbacklight -inc 10
+
+
+# window settings
+assign [class="Firefox"] $WS1
+assign [instance="^urxvt$"] $WS2
+assign [class="Gimp"] $WS4
+assign [class="Steam"] $WS8
+assign [class="discord"] $WS9
+assign [title="spotify"] $WS10
+assign [title="Audacious"] $WS10
+assign [title="cmus"] $WS10
+assign [title="cava"] $WS10
 
 for_window [instance="urxvt_mini"] floating enable
 for_window [title="ranger"] floating enable
@@ -152,18 +154,6 @@ for_window [title="cava"] move left 325px move up 10px
 hide_edge_borders both
 new_window pixel 1
 
-# bar {
-#   status_command ~/.config/i3/i3status_mod.sh
-#   font pango:Hermit 8
-#   position top
-#   colors {
-#     background $background_color
-#     # border background text
-#     focused_workspace $background_color $background_color $text_color
-#     inactive_workspace $background_color $background_color $inactive_text_color
-#   }
-# }
-
 exec nitrogen --restore
 exec udiskie
 exec compton
@@ -172,4 +162,5 @@ exec xinput --set-prop "SynPS/2 Synaptics TouchPad" "libinput Tapping Enabled" 1
 exec xflux -l 12.8797 -g 121.7740
 exec urxvtd -q -o -f
 exec wal -Rqn -a "85"
+exec ~/backupity/.dotfiles/shell_scripts/wal-set.sh
 exec_always ~/backupity/.dotfiles/shell_scripts/polybar_start.sh

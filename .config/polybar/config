@@ -49,7 +49,7 @@ font-3 = Unifont:fontformat=truetype:size=8:antialias=false;0
 
 modules-left = i3
 modules-center =
-modules-right = cmus volume memory cpu wlan battery date
+modules-right = cmus volume memory cpu wlan eth battery date
 
 tray-position = right
 tray-padding = r1
@@ -163,7 +163,7 @@ interval = 2
 format-prefix = " "
 format-prefix-foreground = ${colors.foreground-alt}
 # format-underline = #f90000
-label = %percentage%%
+label = %percentage:3:3%%
 
 [module/memory]
 type = internal/memory
@@ -171,7 +171,7 @@ interval = 2
 format-prefix = " "
 format-prefix-foreground = ${colors.foreground-alt}
 # format-underline = #4bffdc
-label = %percentage_used%%
+label = %percentage_used:3:3%%
 
 [module/wlan]
 type = internal/network
@@ -231,7 +231,7 @@ label = %date% %time%
 type = internal/volume
 
 format-volume = <ramp-volume> <label-volume>
-label-volume = %percentage%%
+label-volume = %percentage:3:3%%
 label-volume-foreground = ${root.foreground}
 
 format-muted-foreground = ${colors.foreground-alt}
@@ -320,7 +320,7 @@ menu-2-1-exec = menu-open-0
 [module/cmus]
 type = custom/script
 
-exec = zsh $dotfiles/shell_scripts/cmus.zsh
+exec = zsh ~/backupity/.dotfiles/shell_scripts/cmus.zsh
 exec-if = pgrep -x cmus
 interval = 1
 

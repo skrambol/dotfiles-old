@@ -6,6 +6,7 @@ alias tmux="tmux -2"
 alias flux="xflux -l 12.8797 -g 121.7740"
 alias mv="mv --backup=numbered"
 alias cp="cp --backup=numbered"
+alias feh="feh -."
 
 alias @play_cmus="urxvtc -name 'urxvt_mini' -e cmus && urxvtc -name 'urxvt_mini' -e cava &"
 alias @javac='find ../src -name "*.java" > java.txt | javac -Xdiags:verbose -Xlint:deprecation -Xlint:unchecked -d . @java.txt'
