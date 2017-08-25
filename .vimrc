@@ -1,6 +1,4 @@
 " variables
-let g:airline_powerline_fonts=1
-let g:airline_section_z="%4l : %3v"
 let g:gitgutter_override_sign_column_highlight = 0
 
 if !exists("g:syntax_on")
@@ -20,6 +18,7 @@ hi TabLine ctermbg=none ctermfg=236 cterm=none
 hi TabLineFill ctermbg=none cterm=none ctermfg=none
 hi TabLineSel ctermbg=none cterm=none
 hi Folded ctermbg=none cterm=none
+hi StatusLine ctermbg=none cterm=none
 
 " settings
 filetype indent on
@@ -29,7 +28,7 @@ set ts=2 sw=2 expandtab autoindent smartindent
 set foldmethod=syntax nofoldenable
 set autoread
 set list lcs=trail:·
-set laststatus=2
+set showtabline=2
 set showcmd
 set incsearch
 
@@ -54,5 +53,6 @@ nnoremap <Space> :checktime<CR>
 map <C-n> :NERDTreeToggle<CR>
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
+" pathogen
 execute pathogen#infect()
 call pathogen#helptags()

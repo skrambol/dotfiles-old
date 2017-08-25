@@ -27,7 +27,7 @@ height = 18
 ; radius = 6.0
 fixed-center = false
 
-background = #0d000000
+background = #0c000000
 foreground = ${colors.foreground}
 
 line-size = 0
@@ -44,7 +44,7 @@ module-margin-right = 1
 
 font-0 = Monaco:size=9;0
 font-1 = FontAwesome:size=10;2
-font-2 = Wuncon Siji:pixelsize=10;0
+font-2 = Wuncon Siji:pixelsize=10;1
 font-3 = Unifont:fontformat=truetype:size=8:antialias=false;0
 
 modules-left = i3
@@ -52,7 +52,7 @@ modules-center =
 modules-right = cmus volume memory cpu wlan eth battery date
 
 tray-position = right
-tray-padding = r1
+tray-padding = 1
 tray-transparent = true
 ;tray-background = #0063ff
 
@@ -242,7 +242,13 @@ ramp-volume-1 = 
 ramp-volume-2 = 
 ramp-headphones-0 = 
 ramp-volume-foreground = ${colors.foreground-alt}
+ramp-headphones-foreground = ${colors.foreground-alt}
 
+speaker-mixer = Speaker
+headphone-mixer = Headphone
+headphone-id = 15
+
+mapped = true
 
 [module/battery]
 type = internal/battery
@@ -328,6 +334,18 @@ format-prefix = " "
 format-prefix-foreground = ${colors.foreground-alt}
 
 click-left = cmus-remote -u
+
+[module/playerctl]
+type = custom/script
+
+exec = echo $(playerctl metadata artist) - $(playerctl metadata title)
+exec-if = pgrep -x spotify || pgrep -x audacious
+interval = 1
+
+format-prefix = " "
+format-prefix-foreground = ${colors.foreground-alt}
+
+click-left = playerctl play-pause
 
 [settings]
 screenchange-reload = true

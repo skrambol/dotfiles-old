@@ -20,6 +20,7 @@ PROMPT='%(?.%F{white}.%F{red})${PURE_PROMPT_SYMBOL:-→}%f '
 
 # OPTIONS
 setopt histignorealldups sharehistory
+setopt correct
 
 # modules
 autoload -Uz compinit; compinit
