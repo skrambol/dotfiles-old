@@ -12,3 +12,8 @@ convert $tmp_screen -scale 10% -scale 1000% $tmp_screen
 # -font "/home/foxtrot/.local/share/fonts/Hermit-light.otf" -pointsize 30 -fill white -gravity center -annotate +0+350 "SHOW ME WHAT YOU GOT"\
 i3lock -u -i $tmp_screen
 rm $tmp_screen
+
+#
+# main idea from https://github.com/savoca/dotfiles/blob/gray/home/.bin/scripts/lock.sh
+#
+

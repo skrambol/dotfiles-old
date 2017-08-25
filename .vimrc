@@ -19,6 +19,7 @@ hi TabLineFill ctermbg=none cterm=none ctermfg=none
 hi TabLineSel ctermbg=none cterm=none
 hi Folded ctermbg=none cterm=none
 hi StatusLine ctermbg=none cterm=none
+hi StatusLineNC ctermbg=none cterm=none
 
 " settings
 filetype indent on
