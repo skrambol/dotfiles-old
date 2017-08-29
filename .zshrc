@@ -23,6 +23,6 @@ setopt histignorealldups sharehistory
 setopt correct
 
 # modules
-autoload -Uz compinit; compinit
+autoload -Uz compinit; compinit -D
 
 # source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh

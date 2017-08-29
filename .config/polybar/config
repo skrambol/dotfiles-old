@@ -27,7 +27,7 @@ height = 18
 ; radius = 6.0
 fixed-center = false
 
-background = #0c000000
+background = ${colors.background}
 foreground = ${colors.foreground}
 
 line-size = 0

@@ -18,8 +18,8 @@ hi TabLine ctermbg=none ctermfg=236 cterm=none
 hi TabLineFill ctermbg=none cterm=none ctermfg=none
 hi TabLineSel ctermbg=none cterm=none
 hi Folded ctermbg=none cterm=none
-hi StatusLine ctermbg=none cterm=none
-hi StatusLineNC ctermbg=none cterm=none
+hi StatusLine ctermbg=black cterm=none
+hi StatusLineNC ctermbg=black cterm=none
 
 " settings
 filetype indent on
@@ -29,9 +29,8 @@ set ts=2 sw=2 expandtab autoindent smartindent
 set foldmethod=syntax nofoldenable
 set autoread
 set list lcs=trail:·
-set showtabline=2
-set showcmd
 set incsearch
+set hidden
 
 " keybindings
 nnoremap <S-Tab> <<
