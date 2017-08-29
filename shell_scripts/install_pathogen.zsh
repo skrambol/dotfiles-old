@@ -14,6 +14,7 @@ git_repo=(\
   "scrooloose/nerdtree" \
   "airblade/vim-gitgutter" \
   "vim-airline/vim-airline" \
+  "dylanaraps/wal.vim" \
 )
 
 for i in {1..$#git_repo}; do

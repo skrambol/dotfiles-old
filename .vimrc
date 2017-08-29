@@ -1,5 +1,8 @@
 " variables
 let g:gitgutter_override_sign_column_highlight = 0
+let g:airline_section_z="%4l : %3v"
+let g:airline_powerline_fonts= 1
+let g:airline_theme="wal"
 
 if !exists("g:syntax_on")
     syntax enable
