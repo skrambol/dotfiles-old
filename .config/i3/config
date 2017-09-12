@@ -1,6 +1,6 @@
 set $mod Mod4
 
-font pango:Zag Regular 8
+font pango:Monaco 9
 
 floating_modifier $mod
 
@@ -95,21 +95,10 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-# colors [for i3status]
-set $background_color #2F343F
-set $text_color       #f3f4f5
-set $inactive_background_color   #2F343F
-set $inactive_text_color #1F1F1F
-
-# border bg fg indicator
-client.focused $background_color $background_color $text_color $background_color
-client.unfocused $background_color $background_color $background_color $background_color
-client.focused_inactive $background_color $background_color $background_color $background_color
-
 # keybindings
 bindsym $mod+Return exec --no-startup-id urxvtc -e "tmux"
 bindsym $mod+Shift+Return exec --no-startup-id urxvtc -name "urxvt_mini"
-bindsym $mod+d exec --no-startup-id urxvtc -name "urxvt_mini" -e ranger
+bindsym $mod+d exec pcmanfm
 bindsym $mod+Shift+f exec "firefox -P Clandestine"
 bindsym $mod+F2 exec --no-startup-id "rofi -show run -width 30 -hide-scrollbar -lines 3 -font 'Hermit 18'"
 bindsym $mod+Tab exec --no-startup-id "rofi -show window -width 30 -hide-scrollbar -lines 3 -font 'Hermit 18'"
@@ -128,20 +117,18 @@ bindsym XF86AudioStop exec --no-startup-id playerctl stop || cmus-remote -s
 bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 10
 bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -inc 10
 
-
 # window settings
 assign [class="Firefox"] $WS1
 assign [instance="^urxvt$"] $WS2
+assign [class="Evince"] $WS3
 assign [class="Gimp"] $WS4
 assign [class="Steam"] $WS8
 assign [class="discord"] $WS9
-assign [title="spotify"] $WS10
 assign [title="Audacious"] $WS10
 assign [title="cmus"] $WS10
 assign [title="cava"] $WS10
 
 for_window [instance="urxvt_mini"] floating enable
-for_window [title="ranger"] floating enable
 for_window [class="URxvt"] border pixel 1
 for_window [class="discord"] floating enable border pixel 1
 for_window [class="Pcmanfm"] floating enable
@@ -150,17 +137,31 @@ for_window [class="Nitrogen"] floating enable
 for_window [class="Steam"] floating enable
 for_window [title="cmus"] move right 325px
 for_window [title="cava"] move left 325px move up 10px
+for_window [instance="Places|Devtools|Browser" class="Firefox"] floating enable
 
 hide_edge_borders both
 new_window pixel 1
 
 exec --no-startup-id nitrogen --restore
+exec --no-startup-id wal -Rqn -a "95"
+exec --no-startup-id ~/backupity/.dotfiles/shell_scripts/wal-set.sh
 exec --no-startup-id udiskie
-exec --no-startup-id compton
+exec --no-startup-id compton -b
 exec --no-startup-id xinput --set-prop "SynPS/2 Synaptics TouchPad" "libinput Natural Scrolling Enabled" 1
 exec --no-startup-id xinput --set-prop "SynPS/2 Synaptics TouchPad" "libinput Tapping Enabled" 1
 exec --no-startup-id xflux -l 12.8797 -g 121.7740
 exec --no-startup-id urxvtd -q -o -f
-exec --no-startup-id wal -Rqn -a "85"
-exec --no-startup-id ~/backupity/.dotfiles/shell_scripts/wal-set.sh
 exec_always --no-startup-id ~/backupity/.dotfiles/shell_scripts/polybar_start.sh
+
+# colors
+set_from_resource $fg i3wm.color7 #000000
+set_from_resource $bg i3wm.color0 #000000
+set_from_resource $in i3wm.color1 #000000
+set_from_resource $ur i3wm.color4 #000000
+
+# class                 border  backgr. text indicator  child_menu
+client.focused          $bg     $bg     $fg  $bg        $bg
+client.focused_inactive $bg     $bg     $bg  $bg        $bg
+client.unfocused        $bg     $bg     $bg  $bg        $bg
+client.urgent           $ur     $ur     $fg  $ur        $bg
+client.placeholder      $bg     $bg     $fg  $bg        $bg

@@ -1,7 +1,8 @@
 alias less='less -N'
 alias ls="ls --color --group-directories-first"
+alias ll="ls -lhv"
+alias la="ls -lhAv"
 alias grep="grep --color"
-alias ll="ls -lA"
 alias tmux="tmux -2"
 alias flux="xflux -l 12.8797 -g 121.7740"
 alias mv="mv --backup=numbered"
@@ -30,6 +31,12 @@ function @mv {
   return $STATUS
 }
 
-function @aur-snapshot {
-  wget https://aur.archlinux.org/cgit/aur.git/snapshot/$1.tar.gz
+function @pacman-aur {
+  cd ~/.local/share
+  git clone https://aur.archlinux.org/$1.git &&
+  wget https://aur.archlinux.org/cgit/aur.git/snapshot/$1.tar.gz &&
+  tar -xvf $1.tar.gz &&
+  mv $1.tar.gz ~/.local/share/zip &&
+  cd $1 &&
+  makepkg -si
 }

@@ -49,7 +49,7 @@ font-3 = Unifont:fontformat=truetype:size=8:antialias=false;0
 
 modules-left = i3
 modules-center =
-modules-right = cmus volume memory cpu wlan eth battery date
+modules-right = cmus volume memory cpu wlan eth battery date powermenu
 
 tray-position = right
 tray-padding = 1
@@ -104,7 +104,7 @@ index-sort = true
 wrapping-scroll = false
 strip-wsnumbers = true
 
-ws-unfocused = #222
+ws-unfocused = ${colors.secondary:#333333}
 
 ; Only show workspaces on the same output as the bar
 ;pin-workspaces = true
@@ -132,7 +132,8 @@ label-visible-padding = ${self.label-mode-padding}
 
 ; urgent = Workspace with urgency hint set
 label-urgent = %name%
-label-urgent-background = ${colors.alert}
+label-urgent-foreground = ${colors.background}
+label-urgent-background = ${colors.foreground}
 label-urgent-padding = ${self.label-mode-padding}
 
 [module/xbacklight]
@@ -216,7 +217,7 @@ type = internal/date
 interval = 1
 
 date =
-date-alt = "(%a) %b %d, %Y"
+date-alt = " (%a) %b %d, %Y"
 
 time = %H:%M
 time-alt = %H:%M:%S
@@ -244,8 +245,9 @@ ramp-headphones-0 = 
 ramp-volume-foreground = ${colors.foreground-alt}
 ramp-headphones-foreground = ${colors.foreground-alt}
 
-speaker-mixer = Speaker
-headphone-mixer = Headphone
+; master-mixer = Master
+; speaker-mixer = Speaker
+; headphone-mixer = Headphone
 headphone-id = 15
 
 mapped = true
@@ -302,7 +304,7 @@ type = custom/menu
 format-spacing = 1
 
 label-open = 
-label-open-foreground = ${colors.secondary}
+label-open-foreground = ${colors.foreground}
 label-close =  cancel
 label-close-foreground = ${colors.secondary}
 label-separator = |
@@ -316,10 +318,10 @@ menu-0-1-exec = menu-open-2
 menu-1-0 = cancel
 menu-1-0-exec = menu-open-0
 menu-1-1 = reboot
-menu-1-1-exec = sudo reboot
+menu-1-1-exec = reboot
 
 menu-2-0 = power off
-menu-2-0-exec = sudo poweroff
+menu-2-0-exec = poweroff
 menu-2-1 = cancel
 menu-2-1-exec = menu-open-0
 
@@ -334,6 +336,7 @@ format-prefix = " "
 format-prefix-foreground = ${colors.foreground-alt}
 
 click-left = cmus-remote -u
+click-middle = pkill cmus
 
 [module/playerctl]
 type = custom/script
@@ -355,7 +358,7 @@ screenchange-reload = true
 ;compositing-border = over
 
 [global/wm]
-margin-top = 5
-margin-bottom = 5
+margin-top = 0
+margin-bottom = 0
 
 ; vim:ft=dosini

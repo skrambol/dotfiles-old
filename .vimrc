@@ -1,11 +1,21 @@
 " variables
-let g:gitgutter_override_sign_column_highlight = 0
-let g:airline_section_z="%4l : %3v"
-let g:airline_powerline_fonts= 1
+let g:gitgutter_override_sign_column_highlight=0
+let g:airline_section_z="%l : %v"
+let g:airline_powerline_fonts=1
 let g:airline_theme="wal"
+let g:NERDTreeDirArrowExpandable="→"
+let g:NERDTreeDirArrowCollapsible="↓"
+let g:airline#extensions#ale#enabled=1
+let g:ctrlp_map="<c-p>"
+let g:ctrlp_cmd="CtrlP"
+let g:ctrlp_working_path_mode="ra"
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\.git$\|\.yardoc\|node_modules\|log\|tmp$',
+  \ 'file': '\.so$\|\.dat$|\.DS_Store$'
+  \ }
 
 if !exists("g:syntax_on")
-    syntax enable
+  syntax enable
 endif
 
 " theming
@@ -23,6 +33,7 @@ hi TabLineSel ctermbg=none cterm=none
 hi Folded ctermbg=none cterm=none
 hi StatusLine ctermbg=black cterm=none
 hi StatusLineNC ctermbg=black cterm=none
+hi MatchParen ctermbg=cyan ctermfg=black
 
 " settings
 filetype indent on
@@ -34,6 +45,7 @@ set autoread
 set list lcs=trail:·
 set incsearch
 set hidden
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip
 
 " keybindings
 nnoremap <S-Tab> <<

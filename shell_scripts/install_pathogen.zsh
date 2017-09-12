@@ -15,8 +15,11 @@ git_repo=(\
   "airblade/vim-gitgutter" \
   "vim-airline/vim-airline" \
   "dylanaraps/wal.vim" \
+  "kien/ctrlp.vim" \
+  "tpope/vim-surround" \
 )
 
 for i in {1..$#git_repo}; do
-  git clone $_github/$git_repo[$i] $_bundle/$(basename $git_repo[$i])
+  git clone $_github/$git_repo[$i] $_bundle/$(basename $git_repo[$i]) 2> /dev/null
+  [[ $? != 0 ]] && echo "Skipping ${git_repo[$i]}..."
 done
