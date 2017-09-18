@@ -1,10 +1,9 @@
 #!/bin/zsh
 
-zscripts="$dotfiles/shell_scripts"
-zfuncs="$dotfiles/.zfunctions"
+zfunctions="$zsh_config/zfunctions"
 
-scripts=($zscripts/pure.zsh $zscripts/async.zsh)
-funcs=($zfuncs/prompt_pure_setup $zfuncs/async)
+scripts=($zfunctions/pure.zsh $zfunctions/async.zsh)
+funcs=($zfunctions/prompt_pure_setup $zfunctions/async)
 
 if [[ $#scripts == $#funcs ]]; then
   for i in {1..$#scripts}; do
@@ -12,6 +11,3 @@ if [[ $#scripts == $#funcs ]]; then
     echo linked $(basename $scripts[$i]) to $(basename $funcs[$i])
   done;
 fi
-
-
-

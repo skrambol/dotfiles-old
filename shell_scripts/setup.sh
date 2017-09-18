@@ -6,15 +6,15 @@ LOG=">>"
 function config {
   echo "== CONFIG =="
   dotfiles="$HOME/backupity/.dotfiles"
-  zshrc="$dotfiles/.zshrc"
-  vimrc="$dotfiles/.vimrc"
-  tmuxconf="$dotfiles/.tmux.conf"
-  aliasessh="$dotfiles/.aliases.sh"
+  zshrc="$dotfiles/config/zsh/zshrc"
+  vimrc="$dotfiles/config/vim/vimrc"
+  tmuxconf="$dotfiles/config/tmux/tmux.conf"
+  aliasessh="$dotfiles/shell_scripts/aliases.sh"
 
-  [[ -f $zshrc ]] && echo "source $zshrc" > ~/.zshrc || echo $ERROR $zshrc not found
-  [[ -f $vimrc ]] && echo "so $vimrc" > ~/.vimrc || echo $ERROR $vimrc not found
-  [[ -f $tmuxconf ]] && echo "source-file $tmuxconf" > ~/.tmux.conf || echo $ERROR $tmuxconf not found
-  [[ -f $aliasessh ]] && echo "source $aliasessh" > ~/.aliases.sh || echo $ERROR $aliasessh not found
+  # [[ -f $zshrc ]] && echo "source $zshrc" > ~/.zshrc || echo $ERROR $zshrc not found
+  # [[ -f $vimrc ]] && echo "so $vimrc" > ~/.vimrc || echo $ERROR $vimrc not found
+  # [[ -f $tmuxconf ]] && echo "source-file $tmuxconf" > ~/.tmux.conf || echo $ERROR $tmuxconf not found
+  # [[ -f $aliasessh ]] && echo "source $aliasessh" > ~/.aliases.sh || echo $ERROR $aliasessh not found
 }
 
 function install {

@@ -2,14 +2,17 @@
 
 # VARIABLES
 export dotfiles="$HOME/backupity/.dotfiles"
-export fpath=( "$dotfiles/.zfunctions" $fpath)
+export zsh_config="$dotfiles/config/zsh"
+export fpath=( "$zsh_config/zfunctions" $fpath)
 export EDITOR="vim"
 HISTFILE="$HOME/.zhistory"
 SAVEHIST=2000
 HISTSIZE=1000
+zkbd="$zsh_config/zkbd"
 
-[[ -f $dotfiles/.zkbd ]] && source $dotfiles/.zkbd
-[[ -f ~/.aliases.sh ]] && source ~/.aliases.sh
+bindkey -e # to set keymapping to emacs regardless of EDITOR
+
+[[ -f $zkbd ]] && source $zkbd # custom key mapping
 
 # PROMPT
 autoload -U promptinit; promptinit
@@ -22,8 +25,6 @@ PROMPT='%(?.%F{white}.%F{red})${PURE_PROMPT_SYMBOL:-→}%f '
 # OPTIONS
 setopt histignorealldups sharehistory
 setopt correct
-
-bindkey -e # to set keymapping to emacs regardless of EDITOR
 
 # MODULES
 autoload -Uz compinit; compinit -D

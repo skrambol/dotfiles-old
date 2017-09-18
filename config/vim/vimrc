@@ -62,6 +62,7 @@ nnoremap <leader>p :CtrlP<CR>
 nnoremap <leader>v :vsplit<CR>
 nnoremap <leader>h :split<CR>
 nnoremap <leader>gs :Gstatus<CR>
+nnoremap <leader>gc :Gcommit<CR>
 nnoremap <leader><leader>h <C-w>h
 nnoremap <leader><leader>j <C-w>j
 nnoremap <leader><leader>k <C-w>k

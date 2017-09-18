@@ -1,15 +1,11 @@
-.zfunctions/*
-!.zfunctions/*.zsh
+config/vim/bundle
+config/vim/autoload
+config/vim/.netrwhist
 
-.vim/bundle
-.vim/autoload
-.vim/.netrwhist
-
-.config/cmus/*.pl
+config/zsh/zfunctions/*
+!config/zsh/zfunctions/*.zsh
 
 **/*history
 **/*.sw[op]
 
 .fonts/
-
-.zkbd
