@@ -1,7 +1,8 @@
 URxvt.scrollBar: false
 
-URxvt.font: xft:xos4 Terminus :size=10
-URxvt.boldFont: xft:xos4 Terminus :bold :size=10
+URxvt.font: xft:Input :size=10
+URxvt.italicFont: xft:Input :italic :size=10
+URxvt.boldFont: xft:Input :bold :size=10
 
 rofi.color-enabled: true
 ! State:  bg fg bgalt hlbg hlfg

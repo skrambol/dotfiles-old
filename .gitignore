@@ -8,6 +8,7 @@
 .config/cmus/*.pl
 
 **/*history
+**/*.sw[op]
 
 .fonts/
 

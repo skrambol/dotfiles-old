@@ -3,9 +3,8 @@
 # VARIABLES
 export dotfiles="$HOME/backupity/.dotfiles"
 export fpath=( "$dotfiles/.zfunctions" $fpath)
-VISUAL=vim
-EDITOR=vim
-HISTFILE="/home/foxtrot/.zhistory"
+export EDITOR="vim"
+HISTFILE="$HOME/.zhistory"
 SAVEHIST=2000
 HISTSIZE=1000
 
@@ -15,6 +14,8 @@ HISTSIZE=1000
 # PROMPT
 autoload -U promptinit; promptinit
 prompt pure
+PURE_GIT_DOWN_ARROW='↓'
+PURE_GIT_DOWN_ARROW='↑'
 PROMPT='%(?.%F{white}.%F{red})${PURE_PROMPT_SYMBOL:-→}%f '
 # PROMPT=$'\n'"%B%F{81}%d%f"$'\n'">%b "
 
@@ -22,7 +23,7 @@ PROMPT='%(?.%F{white}.%F{red})${PURE_PROMPT_SYMBOL:-→}%f '
 setopt histignorealldups sharehistory
 setopt correct
 
-# modules
-autoload -Uz compinit; compinit -D
+bindkey -e # to set keymapping to emacs regardless of EDITOR
 
-# source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+# MODULES
+autoload -Uz compinit; compinit -D

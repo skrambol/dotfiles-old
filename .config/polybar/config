@@ -42,7 +42,7 @@ padding-right = 1
 module-margin-left = 1
 module-margin-right = 1
 
-font-0 = Monaco:size=9;0
+font-0 = xos4 Terminus:size=9;0
 font-1 = FontAwesome:size=10;2
 font-2 = Wuncon Siji:pixelsize=10;1
 font-3 = Unifont:fontformat=truetype:size=8:antialias=false;0
@@ -328,7 +328,7 @@ menu-2-1-exec = menu-open-0
 [module/cmus]
 type = custom/script
 
-exec = zsh ~/backupity/.dotfiles/shell_scripts/cmus.zsh
+exec = zsh ~/backupity/.dotfiles/shell_scripts/cmus.sh
 exec-if = pgrep -x cmus
 interval = 1
 

@@ -9,11 +9,12 @@ alias mv="mv --backup=numbered"
 alias cp="cp --backup=numbered"
 alias feh="feh -."
 alias bc="bc -l"
+alias cal="cal -3"
 
-alias @play_cmus="$dotfiles/shell_scripts/play_cmus.sh"
 alias @javac='find ../src -name "*.java" > java.txt | javac -Xdiags:verbose -Xlint:deprecation -Xlint:unchecked -d . @java.txt'
 alias @simplehttpserver='python3 -m http.server'
 alias @pdfusion='gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dPDFSETTINGS=/default -dNOPAUSE -dQUIET -dBATCH -dDetectDuplicateImages -dCompressFonts=true -r150 -sOutputFile=output.pdf *.pdf; notify-send "@pdfusion finished!"'
+alias @botus_alive="curl https://mabootyng-racky-botus.herokuapp.com &> /dev/null"
 
 function @mv {
   OK=0

@@ -108,7 +108,7 @@ bindsym $mod+Home exec --no-startup-id ~/backupity/.dotfiles/shell_scripts/lock.
 bindsym XF86AudioRaiseVolume exec --no-startup-id "amixer -q sset Master 2%+ playback unmute"
 bindsym XF86AudioLowerVolume exec --no-startup-id "amixer -q sset Master 2%- playback unmute"
 bindsym Mod1+XF86AudioLowerVolume exec --no-startup-id "amixer -q sset Master 2%+ playback unmute"
-bindsym XF86AudioMute exec --no-startup-id ~/backupity/.dotfiles/shell_scripts/toggle_mute.zsh
+bindsym XF86AudioMute exec --no-startup-id ~/backupity/.dotfiles/shell_scripts/toggle_mute.sh
 bindsym XF86AudioPlay exec --no-startup-id playerctl play-pause || cmus-remote -u
 bindsym XF86AudioPause exec --no-startup-id playerctl play-pause || cmus-remote -u
 bindsym XF86AudioNext exec --no-startup-id playerctl next || cmus-remote -n
@@ -135,8 +135,6 @@ for_window [class="Pcmanfm"] floating enable
 for_window [class="feh"] floating enable
 for_window [class="Nitrogen"] floating enable
 for_window [class="Steam"] floating enable
-for_window [title="cmus"] move right 325px
-for_window [title="cava"] move left 325px move up 10px
 for_window [instance="Places|Devtools|Browser" class="Firefox"] floating enable
 
 hide_edge_borders both

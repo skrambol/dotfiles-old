@@ -3,12 +3,13 @@ let g:gitgutter_override_sign_column_highlight=0
 let g:airline_section_z="%l : %v"
 let g:airline_powerline_fonts=1
 let g:airline_theme="wal"
+let g:airline#extensions#tabline#enabled=1
 let g:NERDTreeDirArrowExpandable="→"
 let g:NERDTreeDirArrowCollapsible="↓"
-let g:airline#extensions#ale#enabled=1
 let g:ctrlp_map="<c-p>"
 let g:ctrlp_cmd="CtrlP"
 let g:ctrlp_working_path_mode="ra"
+let g:ctrlp_show_hidden=1
 let g:ctrlp_custom_ignore = {
   \ 'dir':  '\.git$\|\.yardoc\|node_modules\|log\|tmp$',
   \ 'file': '\.so$\|\.dat$|\.DS_Store$'
@@ -48,24 +49,25 @@ set hidden
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip
 
 " keybindings
+let mapleader=" "
+
 nnoremap <S-Tab> <<
 nnoremap <Tab> >>
 inoremap <S-Tab> <C-d>
 
-nnoremap <F1> 1gt
-nnoremap <F2> 2gt
-nnoremap <F3> 3gt
-nnoremap <F4> 4gt
-nnoremap <F5> 5gt
-nnoremap <F6> 6gt
-nnoremap <F7> 7gt
-nnoremap <F8> 8gt
-nnoremap <F9> 9gt
-nnoremap <F10> 10gt
-nnoremap <F12> :tabe .<CR>
-nnoremap <Space> :checktime<CR>
+nnoremap <leader>s :so %<CR>
+nnoremap <leader>w :w<CR>
+nnoremap <leader>q :q<CR>
+nnoremap <leader>p :CtrlP<CR>
+nnoremap <leader>v :vsplit<CR>
+nnoremap <leader>h :split<CR>
+nnoremap <leader>gs :Gstatus<CR>
+nnoremap <leader><leader>h <C-w>h
+nnoremap <leader><leader>j <C-w>j
+nnoremap <leader><leader>k <C-w>k
+nnoremap <leader><leader>l <C-w>l
 
-map <C-n> :NERDTreeToggle<CR>
+nnoremap <C-n> :NERDTreeToggle<CR>
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 " pathogen
