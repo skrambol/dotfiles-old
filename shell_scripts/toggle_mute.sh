@@ -2,7 +2,7 @@
 
 volume=$( amixer get Master | awk 'NR == 5 {print $6}' );
 
-if [[ $volume = "[on]" ]]; then
+if [ $volume = "[on]" ]; then
   amixer -q sset Master playback mute
   amixer -q sset Speaker playback mute
   amixer -q sset Headphone playback mute
