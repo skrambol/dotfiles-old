@@ -2,6 +2,7 @@
 
 # VARIABLES
 export dotfiles="$HOME/backupity/.dotfiles"
+export shell_scripts="$dotfiles/shell_scripts"
 export zsh_config="$dotfiles/config/zsh"
 export fpath=( "$zsh_config/zfunctions" $fpath)
 export EDITOR="vim"

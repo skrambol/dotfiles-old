@@ -1,4 +1,4 @@
-" variables
+" VARIABLES
 let g:gitgutter_override_sign_column_highlight=0
 let g:airline_section_z="%l : %v"
 let g:airline_powerline_fonts=1
@@ -19,7 +19,7 @@ if !exists("g:syntax_on")
   syntax enable
 endif
 
-" theming
+" THEMING
 colorscheme delek
 hi Normal guibg=NONE ctermbg=NONE
 
@@ -36,9 +36,10 @@ hi StatusLine ctermbg=black cterm=none
 hi StatusLineNC ctermbg=black cterm=none
 hi MatchParen ctermbg=cyan ctermfg=black
 
-" settings
+" SETTINGS
 filetype indent on
 
+set nocompatible
 set relativenumber nu cursorline
 set ts=2 sw=2 expandtab autoindent smartindent
 set foldmethod=syntax nofoldenable
@@ -48,7 +49,7 @@ set incsearch
 set hidden
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip
 
-" keybindings
+" KEYBINDINGS
 let mapleader=" "
 
 nnoremap <S-Tab> <<
@@ -58,19 +59,21 @@ inoremap <S-Tab> <C-d>
 nnoremap <leader>s :so %<CR>
 nnoremap <leader>w :w<CR>
 nnoremap <leader>q :q<CR>
+nnoremap <leader>Q :q!<CR>
 nnoremap <leader>p :CtrlP<CR>
+nnoremap <leader>b :b<Space>
 nnoremap <leader>v :vsplit<CR>
 nnoremap <leader>h :split<CR>
 nnoremap <leader>gs :Gstatus<CR>
 nnoremap <leader>gc :Gcommit<CR>
-nnoremap <leader><leader>h <C-w>h
-nnoremap <leader><leader>j <C-w>j
-nnoremap <leader><leader>k <C-w>k
-nnoremap <leader><leader>l <C-w>l
+nnoremap <leader>H <C-w>h
+nnoremap <leader>J <C-w>j
+nnoremap <leader>K <C-w>k
+nnoremap <leader>L <C-w>l
 
 nnoremap <C-n> :NERDTreeToggle<CR>
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
-" pathogen
+" PATHOGEN
 execute pathogen#infect()
 call pathogen#helptags()

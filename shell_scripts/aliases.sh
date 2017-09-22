@@ -15,29 +15,7 @@ alias @javac='find ../src -name "*.java" > java.txt | javac -Xdiags:verbose -Xli
 alias @simplehttpserver='python3 -m http.server'
 alias @pdfusion='gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dPDFSETTINGS=/default -dNOPAUSE -dQUIET -dBATCH -dDetectDuplicateImages -dCompressFonts=true -r150 -sOutputFile=output.pdf *.pdf; notify-send "@pdfusion finished!"'
 alias @botus_alive="curl https://mabootyng-racky-botus.herokuapp.com &> /dev/null"
-
-function @mv {
-  OK=0
-  NO=1
-  STATUS=$OK
-
-  [[ $# -eq 2 ]] || STATUS=$NO
-
-  if [[ $STATUS -eq $OK ]]; then
-    mv $1 $2
-    [[ -d $2 ]] && cd $2
-    [[ -f $2 ]] && cd $( dirname $2 )
-  fi
-
-  return $STATUS
-}
-
-function @pacman-aur {
-  cd ~/.local/share
-  git clone https://aur.archlinux.org/$1.git &&
-  wget https://aur.archlinux.org/cgit/aur.git/snapshot/$1.tar.gz &&
-  tar -xvf $1.tar.gz &&
-  mv $1.tar.gz ~/.local/share/zip &&
-  cd $1 &&
-  makepkg -si
-}
+alias @mv="source $dotfiles/shell_scripts/mv.sh"
+alias @encrypt_pdf="$dotfiles/shell_scripts/encrypt_pdf.sh"
+alias @pacman_aur="$dotfiles/shell_scripts/pacman_aur.sh"
+alias @projector="$dotfiles/shell_scripts/projector.sh"
