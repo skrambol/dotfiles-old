@@ -19,3 +19,5 @@ alias @mv="source $dotfiles/shell_scripts/mv.sh"
 alias @encrypt_pdf="$dotfiles/shell_scripts/encrypt_pdf.sh"
 alias @pacman_aur="$dotfiles/shell_scripts/pacman_aur.sh"
 alias @projector="$dotfiles/shell_scripts/projector.sh"
+
+source "$dotfiles/shell_scripts/stderr.sh"

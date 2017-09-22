@@ -18,6 +18,7 @@ git_repo=(\
   "kien/ctrlp.vim" \
   "tpope/vim-surround" \
   "tpope/vim-fugitive" \
+  "tpope/vim-repeat" \
 )
 
 for repo in "${git_repo[@]}"; do

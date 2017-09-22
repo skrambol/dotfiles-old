@@ -37,7 +37,7 @@ hi StatusLineNC ctermbg=black cterm=none
 hi MatchParen ctermbg=cyan ctermfg=black
 
 " SETTINGS
-filetype indent on
+filetype plugin indent on
 
 set nocompatible
 set relativenumber nu cursorline
@@ -51,6 +51,9 @@ set wildignore+=*/tmp/*,*.so,*.swp,*.zip
 
 " KEYBINDINGS
 let mapleader=" "
+
+nnoremap j gj
+nnoremap k gk
 
 nnoremap <S-Tab> <<
 nnoremap <Tab> >>
