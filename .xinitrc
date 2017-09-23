@@ -32,4 +32,14 @@ if [ -d /etc/X11/xinit/xinitrc.d ] ; then
  unset f
 fi
 
+nitrogen --restore &
+wal -Rqn -a "95"
+~/backupity/.dotfiles/shell_scripts/wal-set.sh &
+udiskie &
+compton -b
+xinput --set-prop "SynPS/2 Synaptics TouchPad" "libinput Natural Scrolling Enabled" 1 &
+xinput --set-prop "SynPS/2 Synaptics TouchPad" "libinput Tapping Enabled" 1 &
+xflux -l 12.8797 -g 121.7740 &
+urxvtd -q -o -f
+sleep 0.5
 exec i3 -V -d all >> ~/.i3log-$(date +'%F-%k-%M-%S') 2>&1

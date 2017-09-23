@@ -31,3 +31,10 @@ bindkey "${key[End]}" end-of-line
 bindkey "${key[Delete]}" delete-char
 bindkey "^[^[[C" forward-word
 bindkey "^[^[[D" backward-word
+bindkey '^r' history-incremental-search-backward
+bindkey '^A' beginning-of-line
+bindkey '^E' end-of-line
+bindkey '^w' backward-kill-word
+bindkey '^P' up-history
+bindkey '^N' down-history
+bindkey '^?' backward-delete-char

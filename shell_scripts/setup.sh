@@ -1,36 +1,21 @@
 #!/bin/bash
 
-ERROR="><"
-LOG=">>"
-
-function install {
-  echo "== INSTALL =="
-  packages="zsh vim tmux git feh nitrogen"
-
-  if [ $( command -v pacman ) ]; then
-    pkg_mgr="pacman -Sy"
-  elif [ $( command -v apt ) ]; then
-    pkg_mgr="apt install"
-  elif [ $( command -v yum ) ]; then
-    pkg_mgr="yum"
-  fi;
-
-  echo "$LOG package installer command: ${pkg_mgr}"
-
-  echo "sudo $pkg_mgr $packages"
-}
-
 function config {
   echo "== CONFIG =="
+  zshenv="$DOTFILES/config/zsh/zshenv"
   zshrc="$DOTFILES/config/zsh/zshrc"
   vimrc="$DOTFILES/config/vim/vimrc"
   tmuxconf="$DOTFILES/config/tmux/tmux.conf"
   aliasessh="$DOTFILES/shell_scripts/aliases.sh"
 
-  [ -f $zshrc ] && echo "source $zshrc" #> ~/.zshrc || echo $ERROR $zshrc not found
-  [ -f $aliasessh ] && echo "source $aliasessh" #> ~/.zshrc || echo $ERROR $aliasessh not found
-  [ -f $vimrc ] && echo "so $vimrc" #> ~/.vimrc || echo $ERROR $vimrc not found
-  [ -f $tmuxconf ] && echo "source-file $tmuxconf" #> ~/.tmux.conf || echo $ERROR $tmuxconf not found
+  [ -f $zshenv ] && echo "source $zshenv" > ~/.zshenv; source $zshenv || STDERR "$zshenv not found"
+  [ -f $zshrc ] && echo "source $zshrc" | tee ~/.zshrc | bash -x || STDERR "$zshrc not found"
+  [ -f $aliasessh ] && echo "source $aliasessh" | tee -a ~/.zshrc | bash -x || STDERR "$zshrc not found"
+  [ -f $vimrc ] && echo "so $vimrc" | tee -a ~/.vimrc | bash -x || STDERR "$vimrc not found"
+  [ -f $tmuxconf ] && echo "source-file $tmuxconf" | tee -a ~/.tmux.conf | bash -x || STDERR "$tmuxconf not found"
+
+  $CONFIG/zsh/zfunctions/install_zfunctions.zsh
+  $SHELL_SCRIPTS/install_vim_plugins.sh
 }
 
 function link {
@@ -43,24 +28,17 @@ function link {
     "polybar" \
   )
 
-  echo "ln -s $config/vim ~/.vim"
-
   for linkity in ${link_array[@]}; do
     echo "ln -s $config/$linkity $home_config/$linkity"
   done;
 
 }
 
-function usage {
-  echo $*
-  echo Usage: DOTFILES=path/to/dotfiles $0
-}
-
 function main {
-  [ -z $DOTFILES ] && usage "$ERROR DOTFILES not found" && exit 1
-  install
+  [ -z $DOTFILES ] && exit 1
+  # install
   config
-  link
+  # link
 }
 
 main

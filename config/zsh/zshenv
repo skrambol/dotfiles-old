@@ -1,0 +1,12 @@
+export DOTFILES="$HOME/backupity/.dotfiles"
+export CONFIG="$DOTFILES/config"
+export SHELL_SCRIPTS="$DOTFILES/shell_scripts"
+export fpath=( "$CONFIG/zsh/zfunctions" $fpath)
+export EDITOR="vim"
+export HISTFILE="$HOME/.zhistory"
+export SAVEHIST=2000
+export HISTSIZE=1000
+
+function echoerr {
+  echo $* >&2
+}

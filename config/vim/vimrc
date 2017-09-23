@@ -6,7 +6,6 @@ let g:airline_theme="wal"
 let g:airline#extensions#tabline#enabled=1
 let g:NERDTreeDirArrowExpandable="→"
 let g:NERDTreeDirArrowCollapsible="↓"
-let g:ctrlp_map="<c-p>"
 let g:ctrlp_cmd="CtrlP"
 let g:ctrlp_working_path_mode="ra"
 let g:ctrlp_show_hidden=1
@@ -28,9 +27,6 @@ hi NonText ctermbg=none
 hi LineNr ctermbg=none ctermfg=white
 hi CursorLine cterm=none ctermbg=233
 hi SignColumn ctermbg=none
-hi TabLine ctermbg=none ctermfg=236 cterm=none
-hi TabLineFill ctermbg=none cterm=none ctermfg=none
-hi TabLineSel ctermbg=none cterm=none
 hi Folded ctermbg=none cterm=none
 hi StatusLine ctermbg=black cterm=none
 hi StatusLineNC ctermbg=black cterm=none
@@ -49,6 +45,15 @@ set incsearch
 set hidden
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip
 
+" Return to the same line you left off at
+augroup line_return
+  au!
+  au BufReadPost *
+    \ if line("'\"") > 0 && line("'\"") <= line("$") |
+    \ execute 'normal! g`"zvzz' |
+    \ endif
+augroup END
+
 " KEYBINDINGS
 let mapleader=" "
 
@@ -66,13 +71,13 @@ nnoremap <leader>Q :q!<CR>
 nnoremap <leader>p :CtrlP<CR>
 nnoremap <leader>b :b<Space>
 nnoremap <leader>v :vsplit<CR>
-nnoremap <leader>h :split<CR>
+nnoremap <leader>n :split<CR>
 nnoremap <leader>gs :Gstatus<CR>
 nnoremap <leader>gc :Gcommit<CR>
-nnoremap <leader>H <C-w>h
-nnoremap <leader>J <C-w>j
-nnoremap <leader>K <C-w>k
-nnoremap <leader>L <C-w>l
+nnoremap <leader>h <C-w>h
+nnoremap <leader>j <C-w>j
+nnoremap <leader>k <C-w>k
+nnoremap <leader>l <C-w>l
 
 nnoremap <C-n> :NERDTreeToggle<CR>
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif

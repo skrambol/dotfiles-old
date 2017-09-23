@@ -102,6 +102,8 @@ bindsym $mod+d exec pcmanfm
 bindsym $mod+Shift+f exec "firefox -P Clandestine"
 bindsym $mod+F2 exec --no-startup-id "rofi -show run -width 30 -hide-scrollbar -lines 3 -font 'Hermit 18'"
 bindsym $mod+Tab exec --no-startup-id "rofi -show window -width 30 -hide-scrollbar -lines 3 -font 'Hermit 18'"
+bindsym $mod+F12 scratchpad show
+bindsym $mod+Shift+F12 move scratchpad
 bindsym Print exec --no-startup-id scrot -e 'mv $f ~/Pictures/screencaps'
 bindsym Shift+Print exec --no-startup-id scrot -s -e 'mv $f ~/Pictures/screencaps'
 bindsym $mod+Home exec --no-startup-id ~/backupity/.dotfiles/shell_scripts/lock.sh
@@ -136,19 +138,11 @@ for_window [class="feh"] floating enable
 for_window [class="Nitrogen"] floating enable
 for_window [class="Steam"] floating enable
 for_window [instance="Places|Devtools|Browser" class="Firefox"] floating enable
+for_window [title="cmus"] move scratchpad
 
 hide_edge_borders both
 new_window pixel 1
 
-exec --no-startup-id nitrogen --restore
-exec --no-startup-id wal -Rqn -a "95"
-exec --no-startup-id ~/backupity/.dotfiles/shell_scripts/wal-set.sh
-exec --no-startup-id udiskie
-exec --no-startup-id compton -b
-exec --no-startup-id xinput --set-prop "SynPS/2 Synaptics TouchPad" "libinput Natural Scrolling Enabled" 1
-exec --no-startup-id xinput --set-prop "SynPS/2 Synaptics TouchPad" "libinput Tapping Enabled" 1
-exec --no-startup-id xflux -l 12.8797 -g 121.7740
-exec --no-startup-id urxvtd -q -o -f
 exec_always --no-startup-id ~/backupity/.dotfiles/shell_scripts/polybar_start.sh
 
 # colors

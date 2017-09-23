@@ -1,6 +1,6 @@
 #!/bin/zsh
 
-zfunctions="$zsh_config/zfunctions"
+zfunctions="$( CONFIG zsh )/zfunctions"
 
 scripts=($zfunctions/pure.zsh $zfunctions/async.zsh)
 funcs=($zfunctions/prompt_pure_setup $zfunctions/async)

@@ -15,9 +15,7 @@ alias @javac='find ../src -name "*.java" > java.txt | javac -Xdiags:verbose -Xli
 alias @simplehttpserver='python3 -m http.server'
 alias @pdfusion='gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dPDFSETTINGS=/default -dNOPAUSE -dQUIET -dBATCH -dDetectDuplicateImages -dCompressFonts=true -r150 -sOutputFile=output.pdf *.pdf; notify-send "@pdfusion finished!"'
 alias @botus_alive="curl https://mabootyng-racky-botus.herokuapp.com &> /dev/null"
-alias @mv="source $dotfiles/shell_scripts/mv.sh"
-alias @encrypt_pdf="$dotfiles/shell_scripts/encrypt_pdf.sh"
-alias @pacman_aur="$dotfiles/shell_scripts/pacman_aur.sh"
-alias @projector="$dotfiles/shell_scripts/projector.sh"
-
-source "$dotfiles/shell_scripts/stderr.sh"
+alias @mv="source $DOTFILES/shell_scripts/mv.sh"
+alias @encrypt_pdf="$DOTFILES/shell_scripts/encrypt_pdf.sh"
+alias @pacman_aur="$DOTFILES/shell_scripts/pacman_aur.sh"
+alias @projector="$DOTFILES/shell_scripts/projector.sh"
