@@ -8,14 +8,14 @@ function config {
   tmuxconf="$DOTFILES/config/tmux/tmux.conf"
   aliasessh="$DOTFILES/shell_scripts/aliases.sh"
 
-  [ -f $zshenv ] && echo "source $zshenv" > ~/.zshenv; source $zshenv || STDERR "$zshenv not found"
-  [ -f $zshrc ] && echo "source $zshrc" | tee ~/.zshrc | bash -x || STDERR "$zshrc not found"
-  [ -f $aliasessh ] && echo "source $aliasessh" | tee -a ~/.zshrc | bash -x || STDERR "$zshrc not found"
-  [ -f $vimrc ] && echo "so $vimrc" | tee -a ~/.vimrc | bash -x || STDERR "$vimrc not found"
-  [ -f $tmuxconf ] && echo "source-file $tmuxconf" | tee -a ~/.tmux.conf | bash -x || STDERR "$tmuxconf not found"
+  [ -f $zshenva ] && echo "source $zshenv" > ~/.zshenv; source $zshenv || echoerr "$0: $zshenv not found"
+  [ -f $zshrc ] && echo "source $zshrc" > ~/.zshrc || echoerr "$0: $zshrc not found"
+  [ -f $aliasessh ] && echo "source $aliasessh" >> ~/.zshrc; source $aliasessh || echoerr "$$0: zshrc not found"
+  [ -f $vimrc ] && echo "so $vimrc" > ~/.vimrc || echoerr "$0: $vimrc not found"
+  [ -f $tmuxconf ] && echo "source-file $tmuxconf" > ~/.tmux.conf || echoerr "$0: $tmuxconf not found"
 
-  $CONFIG/zsh/zfunctions/install_zfunctions.zsh
-  $SHELL_SCRIPTS/install_vim_plugins.sh
+  zsh $CONFIG/zsh/zfunctions/install_zfunctions.zsh
+  zsh $SHELL_SCRIPTS/install_vim_plugins.sh
 }
 
 function link {

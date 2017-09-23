@@ -9,7 +9,7 @@ mkdir -p $_autoload $_bundle &&
 curl -LSso $_autoload/pathogen.vim https://tpo.pe/pathogen.vim
 
 grep "execute pathogen#infect()" $_vimrc &> /dev/null
-[ $? != 0 ] && echo "execute pathogen#infect()" >> $_vimrc || echo "vim is already infected with pathogen"
+[ $? != 0 ] && echo "execute pathogen#infect()" >> $_vimrc || echoerr "$0: vim is already infected with pathogen"
 
 git_repo=(\
   "scrooloose/nerdtree" \
@@ -24,5 +24,5 @@ git_repo=(\
 
 for repo in "${git_repo[@]}"; do
   git clone $_github/$repo $_bundle/$(basename $repo) &> /dev/null
-  [ $? != 0 ] && echoerr "Failed to add $repo" || echo "Added $repo"
+  [ $? != 0 ] && echoerr "$0: failed to add $repo ($?)" || echo "Added $repo"
 done
