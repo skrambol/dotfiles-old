@@ -6,6 +6,11 @@ let g:airline_theme="wal"
 let g:airline#extensions#tabline#enabled=1
 let g:NERDTreeDirArrowExpandable="→"
 let g:NERDTreeDirArrowCollapsible="↓"
+let g:NERDTreeIgnore = [
+  \ "node_modules",
+  \ "^\.git$",
+  \ ]
+let g:NERDTreeShowHidden=1
 let g:ctrlp_cmd="CtrlP"
 let g:ctrlp_working_path_mode="ra"
 let g:ctrlp_show_hidden=1
@@ -35,10 +40,11 @@ hi MatchParen ctermbg=cyan ctermfg=black
 " SETTINGS
 filetype plugin indent on
 
+set encoding=utf-8
 set nocompatible
 set relativenumber nu cursorline
 set ts=2 sw=2 expandtab autoindent smartindent
-set foldmethod=syntax nofoldenable
+set foldmethod=indent nofoldenable
 set autoread
 set list lcs=trail:·
 set incsearch
@@ -69,11 +75,14 @@ nnoremap <leader>w :w<CR>
 nnoremap <leader>q :q<CR>
 nnoremap <leader>Q :q!<CR>
 nnoremap <leader>p :CtrlP<CR>
-nnoremap <leader>b :b<Space>
+nnoremap <leader>b :ls<CR>:b<Space>
 nnoremap <leader>v :vsplit<CR>
 nnoremap <leader>n :split<CR>
+nnoremap <leader><Del> :bdel<CR>
 nnoremap <leader>gs :Gstatus<CR>
 nnoremap <leader>gc :Gcommit<CR>
+nnoremap <leader><Left> :bp<CR>
+nnoremap <leader><Right> :bN<CR>
 nnoremap <leader>h <C-w>h
 nnoremap <leader>j <C-w>j
 nnoremap <leader>k <C-w>k

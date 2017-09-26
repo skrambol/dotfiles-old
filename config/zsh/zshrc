@@ -10,8 +10,8 @@ zkbd="$CONFIG/zsh/zkbd"
 autoload -U promptinit; promptinit
 prompt pure
 PURE_GIT_DOWN_ARROW='↓'
-PURE_GIT_DOWN_ARROW='↑'
-VIM_PROMPT="→"
+PURE_GIT_UP_ARROW='↑'
+VIM_PROMPT="●"
 PROMPT='%(?.%F{white}.%F{1})${VIM_PROMPT}%f '
 
 prompt_pure_update_vim_prompt() {
@@ -19,7 +19,7 @@ prompt_pure_update_vim_prompt() {
     print "error: pure_update_vim_prompt must be called when zle is active"
     return 1
   }
-  VIM_PROMPT=${${KEYMAP/vicmd/V}/(main|viins)/→}
+  VIM_PROMPT=${${KEYMAP/vicmd/○}/(main|viins)/●}
   zle .reset-prompt
 }
 

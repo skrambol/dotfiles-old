@@ -3,13 +3,14 @@ alias ls="ls --color --group-directories-first"
 alias ll="ls -lhv"
 alias la="ls -lhAv"
 alias grep="grep --color"
-alias tmux="tmux -2"
+alias tmux="tmux -u2"
 alias flux="xflux -l 12.8797 -g 121.7740"
 alias mv="mv --backup=numbered"
 alias cp="cp --backup=numbered"
 alias feh="feh -."
 alias bc="bc -l"
 alias cal="cal -3"
+alias merge="xrdb -merge ~/.Xresources"
 
 alias @javac='find ../src -name "*.java" > java.txt | javac -Xdiags:verbose -Xlint:deprecation -Xlint:unchecked -d . @java.txt'
 alias @simplehttpserver='python3 -m http.server'
