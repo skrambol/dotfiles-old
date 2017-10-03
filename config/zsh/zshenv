@@ -1,6 +1,6 @@
 export DOTFILES="$HOME/backupity/.dotfiles"
 export CONFIG="$DOTFILES/config"
-export SHELL_SCRIPTS="$DOTFILES/shell_scripts"
+export SCRIPTS="$DOTFILES/shell_scripts"
 export fpath=( "$CONFIG/zsh/zfunctions" $fpath)
 export EDITOR="vim"
 export HISTFILE="$HOME/.zhistory"

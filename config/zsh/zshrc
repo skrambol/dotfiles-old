@@ -12,7 +12,7 @@ prompt pure
 PURE_GIT_DOWN_ARROW='↓'
 PURE_GIT_UP_ARROW='↑'
 VIM_PROMPT="●"
-PROMPT='%(?.%F{white}.%F{1})${VIM_PROMPT}%f '
+PROMPT='%(?.%F{white}.%F{red})${VIM_PROMPT}%f '
 
 prompt_pure_update_vim_prompt() {
   zle || {

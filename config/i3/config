@@ -107,6 +107,7 @@ bindsym $mod+Shift+F12 move scratchpad
 bindsym Print exec --no-startup-id scrot -e 'mv $f ~/Pictures/screencaps'
 bindsym Shift+Print exec --no-startup-id scrot -s -e 'mv $f ~/Pictures/screencaps'
 bindsym $mod+Home exec --no-startup-id ~/backupity/.dotfiles/shell_scripts/lock.sh
+bindsym $mod+Prior exec --no-startup-id ~/backupity/.dotfiles/shell_scripts/lock.sh --no-pause
 bindsym XF86AudioRaiseVolume exec --no-startup-id "amixer -q sset Master 2%+ playback unmute"
 bindsym XF86AudioLowerVolume exec --no-startup-id "amixer -q sset Master 2%- playback unmute"
 bindsym Mod1+XF86AudioLowerVolume exec --no-startup-id "amixer -q sset Master 2%+ playback unmute"

@@ -12,10 +12,10 @@ stop_music() {
 
 scrot $tmp_screen
 convert $tmp_screen -scale 10% -scale 1000% $tmp_screen
-[[ -f $tmp_lock_icon ]] || convert $lock_icon -scale 550 $tmp_lock_icon
-[[ -f $tmp_lock_icon ]] && convert $tmp_screen $tmp_lock_icon -gravity center -composite -matte $tmp_screen
+[ -f $tmp_lock_icon ] || convert $lock_icon -scale 550 $tmp_lock_icon
+[ -f $tmp_lock_icon ] && convert $tmp_screen $tmp_lock_icon -gravity center -composite -matte $tmp_screen
 # -font "/home/foxtrot/.local/share/fonts/Hermit-light.otf" -pointsize 30 -fill white -gravity center -annotate +0+350 "SHOW ME WHAT YOU GOT"\
-stop_music
+[ "$1" != "--no-pause" ] && stop_music
 i3lock -u -i $tmp_screen
 rm $tmp_screen
 
