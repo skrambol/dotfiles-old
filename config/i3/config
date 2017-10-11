@@ -4,6 +4,9 @@ font pango:xos4 Terminus 9
 
 floating_modifier $mod
 
+focus_follows_mouse no
+mouse_warping none
+
 bindsym $mod+Shift+q kill
 
 bindsym $mod+h focus left
@@ -123,7 +126,7 @@ bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -inc 10
 # window settings
 assign [class="Firefox"] $WS1
 assign [instance="^urxvt$"] $WS2
-assign [class="Evince"] $WS3
+assign [class="Zathura"] $WS3
 assign [class="Gimp"] $WS4
 assign [class="Steam"] $WS8
 assign [class="discord"] $WS9
@@ -139,7 +142,7 @@ for_window [class="feh"] floating enable
 for_window [class="Nitrogen"] floating enable
 for_window [class="Steam"] floating enable
 for_window [instance="Places|Devtools|Browser" class="Firefox"] floating enable
-for_window [title="cmus"] move scratchpad
+for_window [title="^cmus"] move scratchpad
 
 hide_edge_borders both
 new_window pixel 1

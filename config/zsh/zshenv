@@ -7,6 +7,22 @@ export HISTFILE="$HOME/.zhistory"
 export SAVEHIST=2000
 export HISTSIZE=1000
 
-function echoerr {
+echoerr() {
   echo $* >&2
+}
+
+wal() {
+  file="$HOME/.cache/wal/colors"
+  has_alpha=0
+  /usr/bin/wal $*
+
+  [ $? -ne 0 ] && return 1
+  $SCRIPTS/wal-set.sh
+
+  while [ "$1" != "-a" ] && [ $# -gt 0 ]; do
+    shift
+  done
+
+  alpha=$( echo "obase=16; .${2-0} * 255" | /usr/bin/bc | cut -d'.' -f1 )
+  [ $alpha != "0" ] && grep color0 $file.Xresources | sed s/r0/r0A/ | sed s/#/#$alpha/ >> $file.Xresources; xrdb -merge $file.Xresources
 }

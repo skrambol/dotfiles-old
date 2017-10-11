@@ -37,15 +37,16 @@ endif
 
 " THEMING
 colorscheme delek
-set background=dark
 hi Normal guibg=NONE ctermbg=NONE
 
 hi Special ctermbg=none
 hi NonText ctermbg=none
 hi LineNr ctermbg=none ctermfg=white
-hi CursorLine cterm=none ctermbg=233
+hi CursorLine cterm=none ctermbg=0
 hi SignColumn ctermbg=none
 hi Folded ctermbg=none cterm=none
+hi Comment cterm=ITALIC ctermfg=8
+hi ErrorMsg cterm=none ctermbg=0
 hi StatusLine ctermbg=black cterm=none
 hi StatusLineNC ctermbg=black cterm=none
 hi MatchParen ctermbg=cyan ctermfg=black

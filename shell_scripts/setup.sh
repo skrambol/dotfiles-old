@@ -15,7 +15,7 @@ function config {
   [ -f $tmuxconf ] && echo "source-file $tmuxconf" > ~/.tmux.conf || echoerr "$0: $tmuxconf not found"
 
   zsh $CONFIG/zsh/zfunctions/install_zfunctions.zsh
-  zsh $SHELL_SCRIPTS/install_vim_plugins.sh
+  zsh $SCRIPTS/install_vim_plugins.sh
 }
 
 function link {
@@ -35,7 +35,7 @@ function link {
 }
 
 function main {
-  [ -z $DOTFILES ] && exit 1
+  [ -z $DOTFILES ] && echo DOTFILES variable not found. >&2 && exit 1
   # install
   config
   # link

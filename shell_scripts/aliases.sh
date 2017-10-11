@@ -10,16 +10,19 @@ alias cp="cp --backup=numbered"
 alias feh="feh -. -g 1024x576"
 alias bc="bc -l"
 alias cal="cal -3"
-alias merge="xrdb -merge ~/.Xresources"
 
+alias @mv="source $DSCRIPTS/mv.sh"
+alias @encrypt_pdf="$SCRIPTS/encrypt_pdf.sh"
+alias @pacman_aur="$SCRIPTS/pacman_aur.sh"
+alias @projector="$SCRIPTS/projector.sh"
+alias @def="$SCRIPTS/def.sh"
+alias @merge="$SCRIPTS/merge.sh"
+alias @monitor_set="$SCRIPTS/monitor_set.sh"
+
+alias @activate=". venv/bin/activate"
+alias @reload="source ~/.zshrc"
+alias @pipes="pipes -R -p 5 -t 2 -t 0 -r 5000"
 alias @javac='find ../src -name "*.java" > java.txt | javac -Xdiags:verbose -Xlint:deprecation -Xlint:unchecked -d . @java.txt'
 alias @simplehttpserver='python3 -m http.server'
 alias @pdfusion='gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dPDFSETTINGS=/default -dNOPAUSE -dQUIET -dBATCH -dDetectDuplicateImages -dCompressFonts=true -r150 -sOutputFile=output.pdf *.pdf; notify-send "@pdfusion finished!"'
 alias @botus_alive="curl https://mabootyng-racky-botus.herokuapp.com &> /dev/null"
-alias @mv="source $DOTFILES/shell_scripts/mv.sh"
-alias @encrypt_pdf="$DOTFILES/shell_scripts/encrypt_pdf.sh"
-alias @pacman_aur="$DOTFILES/shell_scripts/pacman_aur.sh"
-alias @projector="$DOTFILES/shell_scripts/projector.sh"
-alias @def="$DOTFILES/shell_scripts/def.sh"
-alias @activate=". venv/bin/activate"
-alias @reload="source ~/.zshrc"
