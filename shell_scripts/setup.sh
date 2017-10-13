@@ -1,6 +1,6 @@
 #!/bin/bash
 
-function config {
+config() {
   echo "== CONFIG =="
   zshenv="$DOTFILES/config/zsh/zshenv"
   zshrc="$DOTFILES/config/zsh/zshrc"
@@ -10,7 +10,7 @@ function config {
 
   [ -f $zshenva ] && echo "source $zshenv" > ~/.zshenv; source $zshenv || echoerr "$0: $zshenv not found"
   [ -f $zshrc ] && echo "source $zshrc" > ~/.zshrc || echoerr "$0: $zshrc not found"
-  [ -f $aliasessh ] && echo "source $aliasessh" >> ~/.zshrc; source $aliasessh || echoerr "$$0: zshrc not found"
+  [ -f $aliasessh ] && echo "source $aliasessh" >> ~/.zshrc > ~/.aliases.sh; source $aliasessh || echoerr "$0: zshrc not found"
   [ -f $vimrc ] && echo "so $vimrc" > ~/.vimrc || echoerr "$0: $vimrc not found"
   [ -f $tmuxconf ] && echo "source-file $tmuxconf" > ~/.tmux.conf || echoerr "$0: $tmuxconf not found"
 
@@ -18,7 +18,7 @@ function config {
   zsh $SCRIPTS/install_vim_plugins.sh
 }
 
-function link {
+link() {
   echo "=== LINK ==="
 
   config="$DOTFILES/config"
@@ -34,7 +34,7 @@ function link {
 
 }
 
-function main {
+main() {
   [ -z $DOTFILES ] && echo DOTFILES variable not found. >&2 && exit 1
   # install
   config

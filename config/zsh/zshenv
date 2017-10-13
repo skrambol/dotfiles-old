@@ -11,10 +11,11 @@ echoerr() {
   echo $* >&2
 }
 
+_wal=$( which wal )
 wal() {
   file="$HOME/.cache/wal/colors"
   has_alpha=0
-  /usr/bin/wal $*
+  $_wal $*
 
   [ $? -ne 0 ] && return 1
   $SCRIPTS/wal-set.sh

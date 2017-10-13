@@ -41,14 +41,14 @@ hi Normal guibg=NONE ctermbg=NONE
 
 hi Special ctermbg=none
 hi NonText ctermbg=none
-hi LineNr ctermbg=none ctermfg=white
-hi CursorLine cterm=none ctermbg=0
+hi LineNr ctermbg=none ctermfg=240
+hi CursorLine cterm=none ctermbg=232
 hi SignColumn ctermbg=none
 hi Folded ctermbg=none cterm=none
-hi Comment cterm=ITALIC ctermfg=8
+hi Comment cterm=ITALIC ctermfg=240
 hi ErrorMsg cterm=none ctermbg=0
-hi StatusLine ctermbg=black cterm=none
-hi StatusLineNC ctermbg=black cterm=none
+hi StatusLine ctermbg=0 cterm=none
+hi StatusLineNC ctermbg=0 cterm=none
 hi MatchParen ctermbg=cyan ctermfg=black
 
 " SETTINGS
@@ -85,7 +85,7 @@ nnoremap <S-Tab> <<
 nnoremap <Tab> >>
 inoremap <S-Tab> <C-d>
 
-nnoremap <leader>s :so %<CR>
+nnoremap <Leader>s :%s/\<<C-r><C-w>\>/
 nnoremap <leader>w :w<CR>
 nnoremap <leader>q :q<CR>
 nnoremap <leader>Q :q!<CR>
@@ -100,9 +100,10 @@ nnoremap <leader>h :bprev<CR>
 nnoremap <leader>l :bnext<CR>
 
 nnoremap <C-n> :NERDTreeToggle<CR>
-nnoremap \p <Plug>GitGutterPreviewHunk
-nnoremap \r <Plug>GitGutterUndoHunk:echomsg ' hr is deprecated. Use  hu'<CR>
-nnoremap \u <Plug>GitGutterUndoHunk
-nnoremap \s <Plug>GitGutterStageHunk
+nnoremap <Bslash>p :GitGutterPreviewHunk<CR>
+nnoremap <Bslash>u :GitGutterUndoHunk<CR>
+nnoremap <Bslash>s :GitGutterStageHunk<CR>
+nnoremap <Bslash>h :GitGutterPrevHunk<CR>
+nnoremap <Bslash>l :GitGutterNextHunk<CR>
 
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif

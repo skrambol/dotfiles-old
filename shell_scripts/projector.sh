@@ -10,8 +10,10 @@ if [ $# -eq 2 ]; then
   [ "$primary" = "$1" ] && primary=$( xrandr | grep -P '(?!.*primary) connected' | cut -d' ' -f1 );
   xrandr --output $primary --primary --auto
   xrandr --output $1 --off
+  MONITOR=$primary $SCRIPTS/polybar_start.sh
 elif [ $# -eq 3 ]; then
   xrandr --output $3 --primary --auto --output $1 $2 $3 --auto
+  MONITOR=${primary=$3} $SCRIPTS/polybar_start.sh
 else
   show_usage "Invalid number of arguments"
   exit 1

@@ -103,8 +103,8 @@ bindsym $mod+Return exec --no-startup-id urxvtc -e "tmux"
 bindsym $mod+Shift+Return exec --no-startup-id urxvtc -name "urxvt_mini"
 bindsym $mod+d exec pcmanfm
 bindsym $mod+Shift+f exec "firefox -P Clandestine"
-bindsym $mod+F2 exec --no-startup-id "rofi -show run -width 30 -hide-scrollbar -lines 3 -font 'Hermit 18'"
-bindsym $mod+Tab exec --no-startup-id "rofi -show window -width 30 -hide-scrollbar -lines 3 -font 'Hermit 18'"
+bindsym $mod+F2 exec --no-startup-id "rofi -show run -width 100 -hide-scrollbar -lines 3 -font 'Hermit 18' -padding 500"
+bindsym $mod+Tab exec --no-startup-id "rofi -show window -width 100 -hide-scrollbar -lines 3 -font 'Hermit 18' -padding 500"
 bindsym $mod+F12 scratchpad show
 bindsym $mod+Shift+F12 move scratchpad
 bindsym Print exec --no-startup-id scrot -e 'mv $f ~/Pictures/screencaps'

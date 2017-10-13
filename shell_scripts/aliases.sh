@@ -18,6 +18,8 @@ alias @projector="$SCRIPTS/projector.sh"
 alias @def="$SCRIPTS/def.sh"
 alias @merge="$SCRIPTS/merge.sh"
 alias @monitor_set="$SCRIPTS/monitor_set.sh"
+alias @colorterm="$SCRIPTS/colorterm.sh"
+alias @ssh="$SCRIPTS/color_ssh.sh"
 
 alias @activate=". venv/bin/activate"
 alias @reload="source ~/.zshrc"
