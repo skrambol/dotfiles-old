@@ -2,15 +2,21 @@
 
 show_usage() {
   echo $*
-  echo "Usage: $0 <aur-repo>"
+  echo "Usage: $0 [makepkg opts] <aur-repo>"
 }
 
-[ $# -ne 1 ] && show_usage "Invalid number of arguments" && exit 1
+[ $# -eq 0 ] || [ $# -gt 2 ] && show_usage "Invalid number of arguments" && exit 1
+
+while [ $# -ne 0 ]; do
+  echo $1 | grep -qE "^-" && opts=$1 || package=$1
+  shift
+done
+
 
 cd ~/.local/share
-git clone https://aur.archlinux.org/$1.git &&
-wget https://aur.archlinux.org/cgit/aur.git/snapshot/$1.tar.gz &&
-tar -xvf $1.tar.gz &&
-mv $1.tar.gz ~/.local/zip &&
-cd $1 &&
-makepkg -sic
+git clone https://aur.archlinux.org/$package.git &&
+wget https://aur.archlinux.org/cgit/aur.git/snapshot/$package.tar.gz &&
+tar -xvf $package.tar.gz &&
+mv $package.tar.gz ~/.local/zip &&
+cd $package &&
+makepkg ${opts-"-si"}

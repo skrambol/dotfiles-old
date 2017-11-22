@@ -103,8 +103,8 @@ bindsym $mod+Return exec --no-startup-id urxvtc -e "tmux"
 bindsym $mod+Shift+Return exec --no-startup-id urxvtc -name "urxvt_mini"
 bindsym $mod+d exec pcmanfm
 bindsym $mod+Shift+f exec "firefox -P Clandestine"
-bindsym $mod+F2 exec --no-startup-id "rofi -show run -width 100 -hide-scrollbar -lines 3 -font 'Hermit 18' -padding 500"
-bindsym $mod+Tab exec --no-startup-id "rofi -show window -width 100 -hide-scrollbar -lines 3 -font 'Hermit 18' -padding 500"
+bindsym $mod+F2 exec --no-startup-id "rofi -show run -width 1400 -hide-scrollbar -lines 3 -font 'Hermit 18' -padding 500"
+bindsym $mod+Tab exec --no-startup-id "rofi -show window -width 1400 -hide-scrollbar -lines 3 -font 'Hermit 18' -padding 500"
 bindsym $mod+F12 scratchpad show
 bindsym $mod+Shift+F12 move scratchpad
 bindsym Print exec --no-startup-id scrot -e 'mv $f ~/Pictures/screencaps'
@@ -128,11 +128,14 @@ assign [class="Firefox"] $WS1
 assign [instance="^urxvt$"] $WS2
 assign [class="Zathura"] $WS3
 assign [class="Gimp"] $WS4
+assign [class="mpv"] $WS4
 assign [class="Steam"] $WS8
 assign [class="discord"] $WS9
 assign [title="Audacious"] $WS10
 assign [title="cmus"] $WS10
 assign [title="cava"] $WS10
+assign [title="spotify"] $WS10
+assign [instance="spotify"] $WS10
 
 for_window [instance="urxvt_mini"] floating enable
 for_window [class="URxvt"] border pixel 1
@@ -142,7 +145,8 @@ for_window [class="feh"] floating enable
 for_window [class="Nitrogen"] floating enable
 for_window [class="Steam"] floating enable
 for_window [instance="Places|Devtools|Browser" class="Firefox"] floating enable
-for_window [title="^cmus"] move scratchpad
+for_window [instance="urxvt_mini" title="^cmus"] move scratchpad
+for_window [class="Spotify"] move to workspace $WS10
 
 hide_edge_borders both
 new_window pixel 1
@@ -150,10 +154,10 @@ new_window pixel 1
 exec_always --no-startup-id ~/backupity/.dotfiles/shell_scripts/polybar_start.sh
 
 # colors
-set_from_resource $fg i3wm.color7 #000000
+set_from_resource $fg i3wm.color7 #ffffff
 set_from_resource $bg i3wm.color0 #000000
 set_from_resource $in i3wm.color1 #000000
-set_from_resource $ur i3wm.color4 #000000
+set_from_resource $ur i3wm.color9 #cc0000
 
 # class                 border  backgr. text indicator  child_menu
 client.focused          $bg     $bg     $fg  $bg        $bg

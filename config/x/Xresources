@@ -1,13 +1,3 @@
-URxvt.scrollBar: false
-
-URxvt.font: xft:Input :pixelsize=14
-URxvt.italicFont: xft:Input :italic :pixelsize=14
-URxvt.boldFont: xft:Input :bold :pixelsize=14
-
-rofi.color-enabled: true
-! State:  bg fg bgalt hlbg hlfg
-rofi.font: Hermit 18
-! rofi.color-window: #CC2F343F
-! rofi.color-normal: #CC2F343F, #CCC1C1C1, #CC2F343F, #CC394249, #CCFFFFFF
-! rofi.color-active: #CC2F343F, #CC80cbc4, #CC2F343F, #CC394249, #CC80cbc4
-! rofi.color-urgent: #CC2F343F, #CCFF1844, #CC2F343F, #CC394249, #CCFF1844
+#include "./Xresources.d/colorscheme.Xresources"
+#include "./Xresources.d/rofi.Xresources"
+#include "./Xresources.d/URxvt.Xresources"

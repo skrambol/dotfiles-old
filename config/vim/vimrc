@@ -23,13 +23,6 @@ let g:NERDTreeIgnore = [
   \ "\.egg-info$",
   \ ]
 let g:NERDTreeShowHidden=1
-let g:ctrlp_cmd="CtrlP"
-let g:ctrlp_working_path_mode="ra"
-let g:ctrlp_show_hidden=1
-let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\.git$\|\.yardoc\|node_modules\|log\|tmp$\|venv',
-  \ 'file': '\.so$\|\.dat$|\.DS_Store$|\.pyc$'
-  \ }
 
 if !exists("g:syntax_on")
   syntax enable
@@ -42,7 +35,7 @@ hi Normal guibg=NONE ctermbg=NONE
 hi Special ctermbg=none
 hi NonText ctermbg=none
 hi LineNr ctermbg=none ctermfg=240
-hi CursorLine cterm=none ctermbg=232
+hi CursorLine cterm=none ctermbg=233
 hi SignColumn ctermbg=none
 hi Folded ctermbg=none cterm=none
 hi Comment cterm=ITALIC ctermfg=240
@@ -89,7 +82,7 @@ nnoremap <Leader>s :%s/\<<C-r><C-w>\>/
 nnoremap <leader>w :w<CR>
 nnoremap <leader>q :q<CR>
 nnoremap <leader>Q :q!<CR>
-nnoremap <leader>p :CtrlP<CR>
+nnoremap <leader>p :Files<CR>
 nnoremap <leader>o :ls<CR>:b<Space>
 nnoremap <leader>v :vsplit<CR>
 nnoremap <leader>n :split<CR>
@@ -100,10 +93,10 @@ nnoremap <leader>h :bprev<CR>
 nnoremap <leader>l :bnext<CR>
 
 nnoremap <C-n> :NERDTreeToggle<CR>
-nnoremap <Bslash>p :GitGutterPreviewHunk<CR>
-nnoremap <Bslash>u :GitGutterUndoHunk<CR>
-nnoremap <Bslash>s :GitGutterStageHunk<CR>
-nnoremap <Bslash>h :GitGutterPrevHunk<CR>
-nnoremap <Bslash>l :GitGutterNextHunk<CR>
+nnoremap <Bslash>p <Plug>GitGutterPreviewHunk
+nnoremap <Bslash>u <Plug>GitGutterUndoHunk
+nnoremap <Bslash>s <Plug>GitGutterStageHunk
+nnoremap <Bslash>h <Plug>GitGutterPrevHunk
+nnoremap <Bslash>l <Plug>GitGutterNextHunk
 
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif

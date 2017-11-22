@@ -8,7 +8,7 @@ _github="https://github.com"
 mkdir -p $_autoload $_bundle &&
 curl -LSso $_autoload/pathogen.vim https://tpo.pe/pathogen.vim
 
-grep "execute pathogen#infect()" $_vimrc &> /dev/null
+grep -q "execute pathogen#infect()" $_vimrc
 [ $? != 0 ] && echo "execute pathogen#infect()" >> $_vimrc || echoerr "$0: vim is already infected with pathogen"
 
 git_repo=(\
@@ -16,7 +16,7 @@ git_repo=(\
   "airblade/vim-gitgutter" \
   "vim-airline/vim-airline" \
   "dylanaraps/wal.vim" \
-  "kien/ctrlp.vim" \
+  "junegunn/fzf.vim" \
   "tpope/vim-surround" \
   "tpope/vim-fugitive" \
   "tpope/vim-repeat" \
