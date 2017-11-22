@@ -1,5 +1,0 @@
-rofi.font: Hermit 18
-rofi.color-window: #D8000000
-rofi.color-normal: #base00, #CC777777, #base00, #base00, #CCFFFFFF
-rofi.color-active: #base00, #CC80cbc4, #base00, #CC394249, #CC80cbc4
-rofi.color-urgent: #base00, #CCFF1844, #base00, #CC394249, #CCFF1844
