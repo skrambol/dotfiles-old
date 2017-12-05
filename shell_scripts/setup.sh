@@ -11,7 +11,7 @@ config() {
   [ -f $zshenva ] && echo "source $zshenv" > ~/.zshenv; source $zshenv || echoerr "$0: $zshenv not found"
   [ -f $zshrc ] && echo "source $zshrc" > ~/.zshrc || echoerr "$0: $zshrc not found"
   [ -f $aliasessh ] && echo "source $aliasessh" > ~/.aliases.sh && echo "source ~/.aliases.sh" >> ~/.zshrc && source $aliasessh || echoerr "$0: zshrc not found"
-  [ -f $vimrc ] && echo "so $vimrc" > ~/.vimrc && mkdir ~/.vim/swp || echoerr "$0: $vimrc not found"
+  [ -f $vimrc ] && echo "so $vimrc" > ~/.vimrc && mkdir ~/.vim/swp -p || echoerr "$0: $vimrc not found"
   [ -f $tmuxconf ] && echo "source-file $tmuxconf" > ~/.tmux.conf || echoerr "$0: $tmuxconf not found"
 
   zsh $CONFIG/zsh/zfunctions/install_zfunctions.zsh
