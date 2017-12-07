@@ -5,4 +5,4 @@ stop_music() {
 }
 
 [ "$1" != "--no-pause" ] && stop_music
-i3lock -c '#000000' -p win -l '#ffffff' -w '#ffffff' -o '#ffffff' -e
+i3lock -c '#000000' win -l '#ffffff' -w '#ffffff' -o '#ffffff' -e

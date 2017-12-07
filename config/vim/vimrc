@@ -23,6 +23,7 @@ let g:NERDTreeIgnore = [
   \ "\.egg-info$",
   \ ]
 let g:NERDTreeShowHidden=1
+let g:vimwiki_map_prefix="\w"
 
 if !exists("g:syntax_on")
   syntax enable
@@ -46,6 +47,7 @@ hi MatchParen ctermbg=cyan ctermfg=black
 
 " SETTINGS
 filetype indent on
+filetype plugin on
 
 set encoding=utf-8
 set nocompatible
@@ -98,5 +100,7 @@ nnoremap <Bslash>u <Plug>GitGutterUndoHunk
 nnoremap <Bslash>s <Plug>GitGutterStageHunk
 nnoremap <Bslash>h <Plug>GitGutterPrevHunk
 nnoremap <Bslash>l <Plug>GitGutterNextHunk
+nnoremap <leader>dd :r !date \+\%Y-\%m-\%d<CR>
+nnoremap <leader>dt :r !date \+\%T<CR>
 
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif

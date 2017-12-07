@@ -20,6 +20,7 @@ git_repo=(\
   "tpope/vim-surround" \
   "tpope/vim-fugitive" \
   "tpope/vim-repeat" \
+  "vimwiki/vimwiki"
 )
 
 for repo in "${git_repo[@]}"; do
