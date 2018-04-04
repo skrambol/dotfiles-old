@@ -1,5 +1,10 @@
 #!/bin/bash
 
+install() {
+  # get package manager
+  # install zsh vim tmux git
+}
+
 config() {
   echo "== CONFIG =="
   zshenv="$DOTFILES/config/zsh/zshenv"
@@ -10,7 +15,7 @@ config() {
 
   [ -f $zshenva ] && echo "source $zshenv" > ~/.zshenv; source $zshenv || echoerr "$0: $zshenv not found"
   [ -f $zshrc ] && echo "source $zshrc" > ~/.zshrc || echoerr "$0: $zshrc not found"
-  [ -f $aliasessh ] && echo "source $aliasessh" >> ~/.zshrc > ~/.aliases.sh; source $aliasessh || echoerr "$0: zshrc not found"
+  [ -f $aliasessh ] && echo "source $aliasessh" >> ~/.zshrc > ~/.aliases.sh; source $aliasessh || echoerr "$0: zshrc not found" #TODO: CHECK IF WORKING
   [ -f $vimrc ] && echo "so $vimrc" > ~/.vimrc || echoerr "$0: $vimrc not found"
   [ -f $tmuxconf ] && echo "source-file $tmuxconf" > ~/.tmux.conf || echoerr "$0: $tmuxconf not found"
 
