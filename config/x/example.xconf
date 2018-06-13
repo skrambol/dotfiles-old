@@ -1,0 +1,9 @@
+. ~/suckless/dstatus/statusbar.sh 2>> ~/.err.log
+. ~/.fehbg 2>> ~/.err.log
+. ~/.xinput 2>> ~/.err.log
+numlockx on 2>> ~/.err.log
+
+while true
+do
+  /usr/local/bin/dwm 2> ~/.dwm.log
+done
