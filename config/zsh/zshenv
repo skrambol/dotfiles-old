@@ -1,4 +1,5 @@
-export DOTFILES="$HOME/backupity/.dotfiles"
+source ~/.dotfiles.loc
+
 export CONFIG="$DOTFILES/config"
 export SCRIPTS="$DOTFILES/shell_scripts"
 export fpath=( "$CONFIG/zsh/zfunctions" $fpath)
@@ -9,21 +10,4 @@ export HISTSIZE=1000
 
 echoerr() {
   echo $* >&2
-}
-
-_wal=$( which wal )
-wal() {
-  file="$HOME/.cache/wal/colors"
-  has_alpha=0
-  $_wal $*
-
-  [ $? -ne 0 ] && return 1
-  $SCRIPTS/wal-set.sh
-
-  while [ "$1" != "-a" ] && [ $# -gt 0 ]; do
-    shift
-  done
-
-  alpha=$( echo "obase=16; .${2-0} * 255" | /usr/bin/bc | cut -d'.' -f1 )
-  [ $alpha != "0" ] && grep color0 $file.Xresources | sed s/r0/r0A/ | sed s/#/#$alpha/ >> $file.Xresources; xrdb -merge $file.Xresources
 }

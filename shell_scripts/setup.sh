@@ -1,5 +1,37 @@
 #!/bin/bash
 
+install() {
+  packages=(
+    'wpa_supplicant' \
+    'dialog' \
+    'wireles_tools' \
+    'ifplugd' \
+    'wpa_actiond' \
+    'zsh' \
+    'tmux' \
+    'vim' \
+    'git'
+  )
+
+  case $1 in
+    x | suckless )
+      packages=(
+        ${packages[@]} \
+        "xorg" \
+        "alsa-utils" \
+        "dmenu" \
+        "firefox" \
+        "feh" \
+        "compton" \
+        "udiskie" \
+        "zathura-pdf-mupdf"
+      )
+      ;;&
+  esac
+
+  echo "sudo pacman -Sy ${packages[@]}"
+}
+
 config() {
   echo "== CONFIG =="
   zshenv="$DOTFILES/config/zsh/zshenv"
@@ -20,27 +52,11 @@ config() {
   mkdir -p ~/.vim/swp
 }
 
-link() {
-  echo "=== LINK ==="
-
-  config="$DOTFILES/config"
-  home_config="~/.config"
-  link_array=(\
-    "i3" \
-    "polybar" \
-  )
-
-  for linkity in ${link_array[@]}; do
-    echo "ln -s $config/$linkity $home_config/$linkity"
-  done;
-
-}
-
 main() {
-  [ -z $DOTFILES ] && echo DOTFILES variable not found. >&2 && exit 1
+  [ -z $DOTFILES ] && echo "DOTFILES variable not found." >&2 && exit 1
+  [ -f ~/.dotfiles.loc ] && source ~/.dotfiles.loc || echo "export DOTFILES=$DOTFILES" > ~/.dotfiles.loc
   # install
   config
-  # link
 }
 
 main
