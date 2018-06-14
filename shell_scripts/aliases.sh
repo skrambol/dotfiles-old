@@ -27,3 +27,4 @@ alias @javac='find ../src -name "*.java" > java.txt | javac -Xdiags:verbose -Xli
 alias @simplehttpserver='python3 -m http.server'
 alias @pdfusion='gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dPDFSETTINGS=/default -dNOPAUSE -dQUIET -dBATCH -dDetectDuplicateImages -dCompressFonts=true -r150 -sOutputFile=output.pdf *.pdf; notify-send "@pdfusion finished!"'
 alias @botus_alive="curl https://mabootyng-racky-botus.herokuapp.com &> /dev/null"
+alias @vimwiki="vim -c VimwikiIndex"
