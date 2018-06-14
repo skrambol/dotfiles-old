@@ -18,6 +18,7 @@ install() {
       packages=(
         ${packages[@]} \
         "xorg" \
+        "xorg-xclipboard" \
         "alsa-utils" \
         "dmenu" \
         "firefox" \
@@ -55,7 +56,7 @@ config() {
 main() {
   [ -z $DOTFILES ] && echo "DOTFILES variable not found." >&2 && exit 1
   [ -f ~/.dotfiles.loc ] && source ~/.dotfiles.loc || echo "export DOTFILES=$DOTFILES" > ~/.dotfiles.loc
-  # install
+  install
   config
 }
 

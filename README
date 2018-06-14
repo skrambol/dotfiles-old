@@ -1,0 +1,9 @@
+# dotfiles
+
+.dotfiles
+
+## Set-up
+
+```sh
+export DOTFILES="dotfiles/location" setup
+```
