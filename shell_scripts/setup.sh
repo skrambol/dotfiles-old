@@ -1,10 +1,12 @@
 #!/bin/bash
 
 install() {
+  echo "== INSTALL =="
+
   packages=(
     'wpa_supplicant' \
     'dialog' \
-    'wireles_tools' \
+    'wireless_tools' \
     'ifplugd' \
     'wpa_actiond' \
     'zsh' \
@@ -17,24 +19,27 @@ install() {
     x | suckless )
       packages=(
         ${packages[@]} \
-        "xorg" \
-        "xorg-xclipboard" \
-        "alsa-utils" \
-        "dmenu" \
-        "firefox" \
-        "feh" \
-        "compton" \
-        "udiskie" \
-        "zathura-pdf-mupdf"
+        'xorg' \
+        'xorg-xclipboard' \
+        'alsa-utils' \
+        'dmenu' \
+        'firefox' \
+        'feh' \
+        'compton' \
+        'udiskie' \
+        'zathura-pdf-mupdf'
       )
       ;;&
+    suckless )
+      git clone https://github.com/systemplado/suckless ~/suckless
+      ;;
   esac
 
-  echo "sudo pacman -Sy ${packages[@]}"
+  sudo pacman -Sy --needed ${packages[@]}
 }
 
 config() {
-  echo "== CONFIG =="
+  echo '== CONFIG =='
   zshenv="$DOTFILES/config/zsh/zshenv"
   zshrc="$DOTFILES/config/zsh/zshrc"
   vimrc="$DOTFILES/config/vim/vimrc"
@@ -50,14 +55,31 @@ config() {
 
   zsh $CONFIG/zsh/zfunctions/install_zfunctions.zsh
   zsh $SCRIPTS/install_vim_plugins.sh
-  mkdir -p ~/.vim/swp
+  [ -d ~/.vim/swp ] || mkdir -p ~/.vim/swp
 }
 
 main() {
+  install_flag=0
+  args=($@)
   [ -z $DOTFILES ] && echo "DOTFILES variable not found." >&2 && exit 1
   [ -f ~/.dotfiles.loc ] && source ~/.dotfiles.loc || echo "export DOTFILES=$DOTFILES" > ~/.dotfiles.loc
-  install
-  config
+
+  [ ${#args} -eq 0 ] && args[0]="config" && set ${args[@]}
+  while [ ${#@} -ne 0 ]; do
+    case $1 in
+      install )
+        shift
+        install $1
+        install_flag=1
+        ;&
+      config )
+        [ $install_flag -eq 0 ] && install
+        config
+        ;;
+    esac
+
+    shift
+  done
 }
 
 main
