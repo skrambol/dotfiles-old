@@ -12,7 +12,9 @@ install() {
     'zsh' \
     'tmux' \
     'vim' \
-    'git'
+    'git' \
+    'unzip' \
+    'the_silver_searcher'
   )
 
   case $1 in
@@ -82,4 +84,4 @@ main() {
   done
 }
 
-main
+main $@

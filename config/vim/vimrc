@@ -7,13 +7,13 @@ let g:gitgutter_override_sign_column_highlight=0
 let g:airline_section_z="%l : %v"
 let g:airline_powerline_fonts=1
 let g:airline_theme="wal"
-let g:airline_left_sep=""
-let g:airline_left_alt_sep="│"
-let g:airline_right_alt_sep="│"
-let g:airline_right_sep=""
+"let g:airline_left_sep=""
+"let g:airline_left_alt_sep="│"
+"let g:airline_right_alt_sep="│"
+"let g:airline_right_sep=""
 let g:airline#extensions#tabline#enabled=1
-let g:NERDTreeDirArrowExpandable="→"
-let g:NERDTreeDirArrowCollapsible="↓"
+"let g:NERDTreeDirArrowExpandable="→"
+"let g:NERDTreeDirArrowCollapsible="↓"
 let g:NERDTreeIgnore = [
   \ "node_modules",
   \ "^\.git$",
@@ -30,7 +30,7 @@ if !exists("g:syntax_on")
 endif
 
 " THEMING
-colorscheme delek
+colorscheme base16-default-dark
 hi Normal guibg=NONE ctermbg=NONE
 
 hi Special ctermbg=none
@@ -47,19 +47,21 @@ hi MatchParen ctermbg=cyan ctermfg=black
 
 " SETTINGS
 filetype indent on
-filetype plugin on
+" filetype plugin on
 
 set encoding=utf-8
 set nocompatible
 set relativenumber nu cursorline
-set ts=2 sw=2 expandtab autoindent smartindent
-set foldmethod=indent nofoldenable
+set ts=2 sw=2 sts=2 expandtab autoindent smartindent
+set foldmethod=manual nofoldenable
 set autoread
 set list lcs=trail:·
 set incsearch
 set hidden
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip
+set updatetime=100
 set directory=$HOME/.vim/swp
+
 
 " Return to the same line you left off at
 augroup line_return

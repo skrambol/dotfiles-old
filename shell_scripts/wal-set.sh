@@ -2,19 +2,23 @@
 # https://github.com/dylanaraps/wal
 
 # Source generated colors.
-source "${HOME}/.cache/wal/colors.sh"
+#source "${HOME}/.cache/wal/colors.sh"
 
 reload_dunst() {
   pkill dunst
   dunst \
-    -lb "${color0:-#F0F0F0}" \
-    -nb "${color0:-#F0F0F0}" \
-    -cb "${color0:-#F0F0F0}" \
-    -lf "${color15:=#000000}" \
-    -bf "${color15:=#000000}" \
-    -cf "${color15:=#000000}" \
-    -nf "${color15:=#000000}" \
+    -lb "${color0:-#000000}" \
+    -nb "${color0:-#000000}" \
+    -cb "${color0:-#000000}" \
+    -lf "${color15:=#FFFFFF}" \
+    -cf "${color15:=#FFFFFF}" \
+    -nf "${color15:=#FFFFFF}" \
+    -frame_width "1" \
+    -frame_color "#FFFFFF" \
     -fn "${DUNST_FONT:-xos4 Terminus 9}" \
+    -shirnk\
+    -padding "5" \
+    -horizontal_padding "5" \
     -geometry "${DUNST_SIZE:-300x30-40+70}" &
 }
 
