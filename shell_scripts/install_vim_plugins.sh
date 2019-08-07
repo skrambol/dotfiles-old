@@ -16,11 +16,9 @@ git_repo=(\
   "airblade/vim-gitgutter" \
   "vim-airline/vim-airline" \
   "dylanaraps/wal.vim" \
-  "junegunn/fzf.vim" \
   "tpope/vim-surround" \
   "tpope/vim-fugitive" \
   "tpope/vim-repeat" \
-  "vimwiki/vimwiki" \
   "chriskempson/base16-vim"
 )
 

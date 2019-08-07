@@ -8,12 +8,12 @@ install() {
     'dialog' \
     'wireless_tools' \
     'ifplugd' \
-    'wpa_actiond' \
     'zsh' \
     'tmux' \
     'vim' \
     'git' \
     'unzip' \
+    'wget' \
     'the_silver_searcher'
   )
 
@@ -23,9 +23,9 @@ install() {
         ${packages[@]} \
         'xorg' \
         'xorg-xclipboard' \
+        'xorg-xinit' \
         'alsa-utils' \
         'dmenu' \
-        'firefox' \
         'feh' \
         'compton' \
         'udiskie' \
@@ -37,7 +37,7 @@ install() {
       ;;
   esac
 
-  sudo pacman -Sy --needed ${packages[@]}
+  sudo pacman -Sy --needed  ${packages[@]}
 }
 
 config() {
@@ -63,8 +63,15 @@ config() {
 main() {
   install_flag=0
   args=($@)
-  [ -z $DOTFILES ] && echo "DOTFILES variable not found." >&2 && exit 1
-  [ -f ~/.dotfiles.loc ] && source ~/.dotfiles.loc || echo "export DOTFILES=$DOTFILES" > ~/.dotfiles.loc
+  if [[ -f ~/.dotfiles.loc ]]; then
+    source ~/.dotfiles.loc
+  elif [[ -z $DOTFILES ]]; then
+    echo "[!] DOTFILES variable not found." >&2
+    exit 1
+  else
+    echo "DOTFILES variable found. ($DOTFILES)"
+    echo "export DOTFILES=$DOTFILES" >> ~/.dotfiles.loc
+  fi
 
   [ ${#args} -eq 0 ] && args[0]="config" && set ${args[@]}
   while [ ${#@} -ne 0 ]; do
@@ -72,10 +79,8 @@ main() {
       install )
         shift
         install $1
-        install_flag=1
         ;&
       config )
-        [ $install_flag -eq 0 ] && install
         config
         ;;
     esac
