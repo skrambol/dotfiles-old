@@ -1,5 +1,5 @@
 alias less='less -N'
-alias ls="ls --color --group-directories-first"
+alias ls="ls --color --group-directories-first -v"
 alias ll="ls -lhv"
 alias la="ls -lhAv"
 alias grep="grep --color"
