@@ -37,6 +37,8 @@ setopt histignorealldups sharehistory
 setopt correct
 setopt autonamedirs
 setopt interactivecomments
+setopt PROMPT_CR PROMPT_SP
+export PROMPT_EOL_MARK="↵"
 
 
 # MODULES

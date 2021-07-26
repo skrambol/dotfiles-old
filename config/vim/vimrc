@@ -1,29 +1,44 @@
-" PATHOGEN
-execute pathogen#infect()
-call pathogen#helptags()
+" vim-plug
+
+call plug#begin('~/.vim/plugged')
+Plug 'linc01/auto-pairs'
+Plug 'fnune/base16-vim'
+Plug 'neoclide/coc.nvim'
+Plug 'junegunn/fzf.vim'
+Plug 'mengelbrecht/lightline-bufferline'
+Plug 'itchyny/lightline.vim'
+Plug 'elixir-editors/vim-elixir'
+Plug 'tpope/vim-fugitive'
+Plug 'airblade/vim-gitgutter'
+Plug 'yuezk/vim-js'
+Plug 'MaxMEllon/vim-jsx-pretty'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-surround'
+call plug#end()
 
 " VARIABLES
 let g:gitgutter_override_sign_column_highlight=0
-let g:airline_section_z="%l : %v"
-let g:airline_powerline_fonts=1
-let g:airline_theme="wal"
-"let g:airline_left_sep=""
-"let g:airline_left_alt_sep="│"
-"let g:airline_right_alt_sep="│"
-"let g:airline_right_sep=""
-let g:airline#extensions#tabline#enabled=1
-"let g:NERDTreeDirArrowExpandable="→"
-"let g:NERDTreeDirArrowCollapsible="↓"
-let g:NERDTreeIgnore = [
-  \ "node_modules",
-  \ "^\.git$",
-  \ "venv",
-  \ "\.pyc$",
-  \ "\.sw[po]$",
-  \ "\.egg-info$",
-  \ ]
-let g:NERDTreeShowHidden=1
-let g:vimwiki_map_prefix="\w"
+let g:gitgutter_map_keys=0
+let g:lightline = {
+  \ 'colorscheme': 'ayu_custom',
+  \ 'active': {
+  \   'left': [ [ 'mode', 'paste' ],
+  \             [ 'cocstatus', 'gitbranch', 'readonly', 'filename', 'modified' ] ]
+  \ },
+  \ 'tabline': {
+  \   'left': [ ['buffers'] ]
+  \ },
+  \ 'component_expand': {
+  \   'buffers': 'lightline#bufferline#buffers'
+  \ },
+  \ 'component_type': {
+  \   'buffers': 'tabsel'
+  \ },
+  \ 'component_function': {
+  \   'gitbranch': 'FugitiveHead',
+  \   'cocstatus': 'coc#status'
+  \ },
+\ }
 
 if !exists("g:syntax_on")
   syntax enable
@@ -39,32 +54,40 @@ hi LineNr ctermbg=none ctermfg=240
 hi CursorLineNr ctermbg=233 ctermfg=254
 hi CursorLine cterm=none ctermbg=233
 hi SignColumn ctermbg=none
-hi GitGutterAdd ctermbg=none
-hi GitGutterChange ctermbg=none
-hi GitGutterDelete ctermbg=none
 hi Folded ctermbg=none cterm=none
 hi Comment cterm=ITALIC ctermfg=240
 hi ErrorMsg cterm=none ctermbg=0
 hi StatusLine ctermbg=0 cterm=none
 hi StatusLineNC ctermbg=0 cterm=none
 hi MatchParen ctermbg=cyan ctermfg=black
+hi SpecialKey ctermfg=240
+hi Visual ctermbg=235
+hi Pmenu ctermbg=232 ctermfg=240
+hi PmenuSel ctermbg=235 ctermfg=7
+hi GitGutter ctermbg=none
 
 " SETTINGS
 filetype indent on
-" filetype plugin on
+filetype plugin on
 
+set laststatus=2
+set showtabline=2
 set encoding=utf-8
 set nocompatible
 set relativenumber nu cursorline
 set ts=2 sw=2 sts=2 expandtab autoindent smartindent
 set foldmethod=manual nofoldenable
 set autoread
-set list lcs=trail:·
+set list lcs=trail:·,tab:\|\ 
 set incsearch
 set hidden
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip
 set updatetime=100
 set directory=$HOME/.vim/swp
+set rtp+=~/.fzf
+set noshowmode
+set wrap linebreak
+set backspace=indent,eol,start
 
 
 " Return to the same line you left off at
@@ -79,34 +102,25 @@ augroup END
 " KEYBINDINGS
 let mapleader=" "
 
-nnoremap j gj
-nnoremap k gk
+nmap <C-p> :GFiles<CR>
 
-nnoremap <S-Tab> <<
-nnoremap <Tab> >>
-inoremap <S-Tab> <C-d>
+nmap j gj
+nmap k gk
 
-nnoremap <Leader>s :%s/\<<C-r><C-w>\>/
-nnoremap <leader>w :w<CR>
-nnoremap <leader>q :q<CR>
-nnoremap <leader>Q :q!<CR>
-nnoremap <leader>p :Files<CR>
-nnoremap <leader>o :ls<CR>:b<Space>
-nnoremap <leader>v :vsplit<CR>
-nnoremap <leader>n :split<CR>
-nnoremap <leader><Del> :bdel<CR>
-nnoremap <leader>gs :Gstatus<CR>
-nnoremap <leader>gc :Gcommit<CR>
-nnoremap <leader>h :bprev<CR>
-nnoremap <leader>l :bnext<CR>
+nmap <leader>s :%s/\<<C-r><C-w>\>/
+nmap <leader>w :w<CR>
+nmap <leader>q :q<CR>
+nmap <leader>Q :q!<CR>
+nmap <leader>p :Files<CR>
+nmap <leader>o :ls<CR>:b<Space>
+nmap <leader>v :vsplit<CR>
+nmap <leader>n :split<CR>
+nmap <leader><Del> :bdel<CR>
+nmap <leader>h :bprev<CR>
+nmap <leader>l :bnext<CR>
+nmap <leader>b :buffers<CR>:buffer<Space>
 
-nnoremap <C-n> :NERDTreeToggle<CR>
-nnoremap <Bslash>p <Plug>GitGutterPreviewHunk
-nnoremap <Bslash>u <Plug>GitGutterUndoHunk
-nnoremap <Bslash>s <Plug>GitGutterStageHunk
-nnoremap <Bslash>h <Plug>GitGutterPrevHunk
-nnoremap <Bslash>l <Plug>GitGutterNextHunk
-nnoremap <leader>dd :r !date \+\%Y-\%m-\%d<CR>
-nnoremap <leader>dt :r !date \+\%T<CR>
+nmap <leader>dd :r !date \+\%Y-\%m-\%d\ \%T<CR>
 
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+nmap <leader>ggu :GitGutterUndoHunk<CR>
+nmap <leader>gs :G<CR>
