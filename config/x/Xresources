@@ -1,3 +1,0 @@
-#include "./Xresources.d/colorscheme.Xresources"
-!#include "./Xresources.d/rofi.Xresources"
-#include "./Xresources.d/URxvt.Xresources"

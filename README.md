@@ -5,5 +5,5 @@
 ## Set-up
 
 ```sh
-export DOTFILES="dotfiles/location" setup
+export DOTFILES="dotfiles/location" ./setup
 ```
